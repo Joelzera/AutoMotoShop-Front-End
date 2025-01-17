@@ -1,13 +1,11 @@
-import { Grid2, Typography } from '@mui/material'
+import Rotas from "./components/rotas"
 
 
 function App() {
 
   return (
     <>
-      <Grid2 container>
-      <Typography variant='h1'>Auto Moto Shop</Typography>
-      </Grid2>
+      <Rotas/>
     </>
   )
 }
