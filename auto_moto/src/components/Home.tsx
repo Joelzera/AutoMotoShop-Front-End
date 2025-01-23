@@ -1,8 +1,34 @@
 import { alpha, AppBar, Box, Button, Grid2, InputBase, styled, Toolbar, Typography } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
+import Carousel from "react-multi-carousel";
+import imagem from '../../img/free-photo-of-carro-veiculo-automovel-branco.jpeg'
+import imagem1 from '../../img/free-photo-of-carro-veiculo-automovel-logotipo (1).jpeg'
+import imagem2 from '../../img/pexels-photo-14776711.webp'
+import imagem3 from '../../img/pexels-photo-16605543.webp'
+import imagem4 from '../../img/pexels-photo-17217465.webp'
+import imagem5 from '../../img/pexels-photo-9050494.jpeg'
+
 
 const Home = () => {
+
+    const responsivo = {
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 3,
+            slidesToSlide: 3  // opcional, padrão 1. 
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2,
+            slidesToSlide: 2  // opcional, padrão 1. 
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1,
+            slidesToSlide: 1  // opcional, padrão 1. 
+        }
+    };
 
 
 
@@ -50,39 +76,56 @@ const Home = () => {
 
 
     return (
-        <>
-            <Grid2 container >
-                <Box sx={{ flexGrow: 1, width: '100%' }}>
-                    <AppBar position="static"
-                        sx={{
-                            color: "#1a1a1a",
-                            backgroundColor: 'white',
-                            boxShadow: 'none', 
-                            borderBottom: '1px solid #B0B0B0',
 
-                        }}>
-                        <Toolbar>
-                            <SportsMotorsportsIcon sx={{ padding: 1, color: '#3b06b6' }} />
-                            <Typography variant="h6" component="div" sx={{ flexGrow: 0.5 }}>
-                                Auto Moto Shop
-                            </Typography>
-                            <Search sx={{ border: '1px solid #B0B0B0', borderRadius: '4px' }}>
-                                <SearchIconWrapper>
-                                    <SearchIcon />
-                                </SearchIconWrapper>
-                                <StyledInputBase
-                                    placeholder="Search…"
-                                    inputProps={{ 'aria-label': 'search' }}
-                                />
-                            </Search>
-                            <Button color="inherit">Comprar</Button>
-                            <Button color="inherit">Vender</Button>
-                            <Button color="inherit">Entrar</Button>
-                        </Toolbar>
-                    </AppBar>
-                </Box>
+        <Grid2 container >
+            <Box sx={{ flexGrow: 1, width: '100%' }}>
+                <AppBar position="static"
+                    sx={{
+                        color: "#1a1a1a",
+                        backgroundColor: 'white',
+                        boxShadow: 'none',
+                        borderBottom: '1px solid #B0B0B0',
+
+                    }}>
+                    <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <SportsMotorsportsIcon sx={{ padding: 1, color: '#3b06b6' }} fontSize="large" />
+                        <Typography variant="h6" >
+                            AutoMotoShop
+                        </Typography>
+                        <Search sx={{ border: '1px solid #B0B0B0', borderRadius: '4px', flexGrow: 0.2 }}>
+                            <SearchIconWrapper>
+                                <SearchIcon />
+                            </SearchIconWrapper>
+                            <StyledInputBase
+                                placeholder="Search…"
+                                inputProps={{ 'aria-label': 'search' }}
+                            />
+                        </Search>
+                        <Button color="inherit">Comprar</Button>
+                        <Button color="inherit">Vender</Button>
+                        <Button color="inherit">Entrar</Button>
+                    </Toolbar>
+                </AppBar>
+            </Box>
+            <Grid2 mt={12}>
+                <Typography variant="h4">Marcas</Typography>
+                <Carousel responsive={responsivo}
+                    infinite={true}
+                    autoPlay={true}
+                    autoPlaySpeed={3000}
+                    keyBoardControl={true}
+                    dotListClass="custom-dot-list-style"
+                    itemClass="carousel-item-padding-40-px">
+                    <img src={imagem}/>
+                    <img src={imagem1}/>
+                    <img src={imagem2}/>
+                    <img src={imagem3}/>
+                    <img src={imagem4}/>
+                    <img src={imagem5}/>
+                </Carousel>
             </Grid2>
-        </>
+        </Grid2>
+
     )
 }
 
