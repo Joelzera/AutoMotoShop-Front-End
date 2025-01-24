@@ -2,6 +2,7 @@ import { alpha, AppBar, Box, Button, Grid2, InputBase, styled, Toolbar, Typograp
 import SearchIcon from '@mui/icons-material/Search';
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css"
 import imagem from '../../img/free-photo-of-carro-veiculo-automovel-branco.jpeg'
 import imagem1 from '../../img/free-photo-of-carro-veiculo-automovel-logotipo (1).jpeg'
 import imagem2 from '../../img/pexels-photo-14776711.webp'
@@ -12,24 +13,30 @@ import imagem5 from '../../img/pexels-photo-9050494.jpeg'
 
 const Home = () => {
 
+ 
+
     const responsivo = {
         desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 3,
-            slidesToSlide: 3  // opcional, padrão 1. 
+          breakpoint: { max: 3000, min: 1024 },
+          items: 6,
+          slidesToSlide: 6  // opcional, padrão 1. 
+        },
+        desktop2: {
+          breakpoint: { max: 1440, min: 1095 },
+          items: 6,
+          slidesToSlide: 6  // opcional, padrão 1. 
         },
         tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 2,
-            slidesToSlide: 2  // opcional, padrão 1. 
+          breakpoint: { max: 1024, min: 876 },
+          items: 4,
+          slidesToSlide: 4  // opcional, padrão 1. 
         },
         mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 1,
-            slidesToSlide: 1  // opcional, padrão 1. 
+          breakpoint: { max: 464, min: 0 },
+          items: 2,
+          slidesToSlide: 2  // opcional, padrão 1. 
         }
-    };
-
+      };
 
 
     const Search = styled('div')(({ theme }) => ({
@@ -107,7 +114,8 @@ const Home = () => {
                     </Toolbar>
                 </AppBar>
             </Box>
-            <Grid2 mt={12}>
+            <Grid2 mt={12}sx={{ marginLeft: 20, marginRight: 20}}>
+               
                 <Typography variant="h4">Marcas</Typography>
                 <Carousel responsive={responsivo}
                     infinite={true}
@@ -116,13 +124,14 @@ const Home = () => {
                     keyBoardControl={true}
                     dotListClass="custom-dot-list-style"
                     itemClass="carousel-item-padding-40-px">
-                    <img src={imagem}/>
-                    <img src={imagem1}/>
-                    <img src={imagem2}/>
-                    <img src={imagem3}/>
-                    <img src={imagem4}/>
-                    <img src={imagem5}/>
+                    <img src={imagem} height='70%' width='95%' style={{ borderRadius: 20}}/>
+                    <img src={imagem1} height='70%' width='95%'  style={{ borderRadius: 20}}/>
+                    <img src={imagem2} height='70%' width='95%'  style={{ borderRadius: 20}}/>
+                    <img src={imagem3} height='70%' width='95%'  style={{ borderRadius: 20}}/>
+                    <img src={imagem4} height='70%' width='95%'  style={{ borderRadius: 20}}/>
+                    <img src={imagem5} height='70%' width='95%' style={{ borderRadius: 20}}/>                                 
                 </Carousel>
+            <Typography variant="h4">Carros a venda</Typography>
             </Grid2>
         </Grid2>
 
