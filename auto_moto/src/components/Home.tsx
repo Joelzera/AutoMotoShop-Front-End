@@ -12,10 +12,13 @@ import imagem5 from '../../img/logo toyota.webp'
 import imagem6 from '../../img/logo volks.jpg'
 import imagem7 from '../../img/logo fiat.webp'
 import imagem8 from '../../img/logo nissan.jpg'
+import imagem9 from '../../img/Logotipo-da-Ram-2.jpg'
+import imagem10 from '../../img/Mercedes-Benz-Logo.png'
 import banner from '../../img/honda-civic-banner-1.png'
-import banner2 from '../../img/Corolla_Hatch_Performance_Hero_Banner_D_1920x1080.webp'
+import banner2 from '../../img/bmw-banner-2.jpg'
 import banner3 from '../../img/virtus.jpg'
-import banner4 from '../../img/byd.jpg'
+import banner4 from '../../img/bydBanner.jpg'
+
 
 
 const Home = () => {
@@ -132,18 +135,16 @@ const Home = () => {
                                 <SearchIcon />
                             </SearchIconWrapper>
                             <StyledInputBase
-                                placeholder="Search…"
+                                placeholder="Procurar"
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
-                        <Button color="inherit">Comprar</Button>
-                        <Button color="inherit">Vender</Button>
-                        <Button color="inherit">Entrar</Button>
+                        <Button color="inherit" sx={{ marginLeft: 1}}>Comprar</Button>
+                        <Button color="inherit" sx={{ marginLeft:1}}>Vender</Button>
+                        <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", marginLeft: 1}}>Entrar</Button>
                     </Toolbar>
                 </AppBar>
-
-                <Grid2 size={{ xs: 12, md: 12}} >
-                    <Typography>banner</Typography>
+                <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ marginLeft: 20, marginRight: 20 }}>
                     <Carousel responsive={responsivoBanner}
                         infinite={true}
                         autoPlay={true}
@@ -151,13 +152,11 @@ const Home = () => {
                         keyBoardControl={true}
                         dotListClass="custom-dot-list-style"
                         itemClass="carousel-item-padding-40-px">
-                        <img src={banner} width='100%' style={{ display: 'block'}} />
-                        <img src={banner2} />
-                        <img src={banner3} />
-                        <img src={banner4} />
+                        <img src={banner} height='90%' width='100%' style={{ marginTop: 30 }} />
+                        <img src={banner2} height='90%' width='100%'  style={{ marginTop: 30 }}/>
+                        <img src={banner3} height='90%' width='100%'  style={{ marginTop: 30 }}/>
+                        <img src={banner4} height='90%' width='100%'  style={{ marginTop: 30 }}/>
                     </Carousel>
-                </Grid2>
-                <Grid2 size={{ xs: 12, md: 12}} sx={{ marginLeft: 20, marginRight: 20 }}>
                     <Typography variant="h4">Marcas</Typography>
                     <Carousel responsive={responsivo}
                         infinite={true}
@@ -166,15 +165,17 @@ const Home = () => {
                         keyBoardControl={true}
                         dotListClass="custom-dot-list-style"
                         itemClass="carousel-item-padding-40-px">
-                        <img src={imagem} height='70%' width='95%' style={{ borderRadius: 20 }} />
-                        <img src={imagem1} height='70%' width='95%' style={{ borderRadius: 20 }} />
-                        <img src={imagem2} height='70%' width='95%' style={{ borderRadius: 20 }} />
-                        <img src={imagem3} height='70%' width='95%' style={{ borderRadius: 20 }} />
-                        <img src={imagem4} height='70%' width='95%' style={{ borderRadius: 20 }} />
-                        <img src={imagem5} height='70%' width='95%' style={{ borderRadius: 20 }} />
-                        <img src={imagem6} height='70%' width='95%' style={{ borderRadius: 20 }} />
-                        <img src={imagem7} height='70%' width='95%' style={{ borderRadius: 20 }} />
-                        <img src={imagem8} height='70%' width='95%' style={{ borderRadius: 20 }} />
+                        <img src={imagem} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid'}} />
+                        <img src={imagem1} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
+                        <img src={imagem2} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
+                        <img src={imagem3} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
+                        <img src={imagem4} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
+                        <img src={imagem5} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
+                        <img src={imagem6} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
+                        <img src={imagem7} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
+                        <img src={imagem8} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
+                        <img src={imagem9} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
+                        <img src={imagem10} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
                     </Carousel>
                     <Typography variant="h4">Carros a venda</Typography>
                 </Grid2>
