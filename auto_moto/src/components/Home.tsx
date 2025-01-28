@@ -18,6 +18,9 @@ import banner from '../../img/honda-civic-banner-1.png'
 import banner2 from '../../img/bmw-banner-2.jpg'
 import banner3 from '../../img/virtus.jpg'
 import banner4 from '../../img/bydBanner.jpg'
+import { useEffect } from "react";
+import axios from "axios";
+
 
 
 
@@ -114,6 +117,19 @@ const Home = () => {
         },
     }));
 
+    useEffect(() =>{
+        const ativo = true
+        const getCar = async() =>{
+            try {
+                const response = await axios.get(`http://localhost:5000/car/all/${ativo}`)
+                console.log(response.data)
+            } catch (error) {
+                console.log(error, 'deu um erro')
+            }
+        }
+        getCar()
+    },[])
+
 
     return (
 
@@ -145,7 +161,9 @@ const Home = () => {
                     </Toolbar>
                 </AppBar>
                 <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ marginLeft: 20, marginRight: 20 }}>
-                    <Carousel responsive={responsivoBanner}
+                    <Carousel 
+
+                        responsive={responsivoBanner}
                         infinite={true}
                         autoPlay={true}
                         autoPlaySpeed={3000}
@@ -158,7 +176,8 @@ const Home = () => {
                         <img src={banner4} height='90%' width='100%'  style={{ marginTop: 30 }}/>
                     </Carousel>
                     <Typography variant="h4">Marcas</Typography>
-                    <Carousel responsive={responsivo}
+                    <Carousel 
+                        responsive={responsivo}
                         infinite={true}
                         autoPlay={true}
                         autoPlaySpeed={3000}
