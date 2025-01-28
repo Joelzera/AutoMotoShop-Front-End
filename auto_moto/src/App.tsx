@@ -1,4 +1,4 @@
-import Rotas from "./components/rotas"
+import Rotas from "./components/Rotas"
 
 
 function App() {
