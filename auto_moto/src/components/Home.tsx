@@ -1,4 +1,4 @@
-import { alpha, AppBar, Box, Button, Grid2, InputBase, styled, Toolbar, Typography } from "@mui/material"
+import { alpha, AppBar, Box, Button,  Card,  CardContent,  CardMedia,  Grid2, InputBase, styled, Toolbar, Typography } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import Carousel from "react-multi-carousel";
@@ -18,13 +18,29 @@ import banner from '../../img/honda-civic-banner-1.png'
 import banner2 from '../../img/bmw-banner-2.jpg'
 import banner3 from '../../img/virtus.jpg'
 import banner4 from '../../img/bydBanner.jpg'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 
 
 
 const Home = () => {
+
+    interface myCarObject {
+        id: string,
+        nome: string,
+        marca: string,
+        ano: number,
+        modelo:string,
+        tipo:string,
+        cor:string,
+        cambio:string,
+        combustivel:string,
+        quilometragem: number,
+        ativo: boolean
+    }
+
+    const [sellCar, setSellCar] = useState< myCarObject[] >([])
 
     const responsivoBanner = {
         desktop: {
@@ -122,13 +138,19 @@ const Home = () => {
         const getCar = async() =>{
             try {
                 const response = await axios.get(`http://localhost:5000/car/all/${ativo}`)
-                console.log(response.data)
+                setSellCar(response.data)
             } catch (error) {
                 console.log(error, 'deu um erro')
             }
         }
         getCar()
     },[])
+
+    useEffect(() =>{
+        if(sellCar.length > 0){
+            console.log(sellCar)
+        }
+    },[sellCar])
 
 
     return (
@@ -197,6 +219,18 @@ const Home = () => {
                         <img src={imagem10} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
                     </Carousel>
                     <Typography variant="h4">Carros a venda</Typography>
+                    {sellCar.map((car) => (             
+                                <Card key={car.id} sx={{maxWidth: 300, border: '1px solid'}}>
+                                <CardMedia sx={{ height: 140 }}/>
+                                <CardContent>
+                                    <Typography variant="h4">{car.nome}</Typography>
+                                    <Typography variant="h6">{car.modelo}</Typography>
+                                    <Typography variant="h6">{car.ano}</Typography>
+                                    <Typography variant="h6">km {car.quilometragem}</Typography>
+                                </CardContent>
+                                <Button>Ver Detalhes</Button>
+                            </Card>                    
+                    ))}
                 </Grid2>
             </Grid2>
         </Box>
