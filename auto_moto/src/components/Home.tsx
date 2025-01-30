@@ -1,4 +1,4 @@
-import { alpha, AppBar, Box, Button,  Card,  CardContent,  CardMedia,  Grid2, InputBase, styled, Toolbar, Typography } from "@mui/material"
+import { alpha, AppBar, Box, Button, Card, CardContent, CardMedia, Grid2, InputBase, styled, Toolbar, Typography } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import Carousel from "react-multi-carousel";
@@ -18,6 +18,7 @@ import banner from '../../img/honda-civic-banner-1.png'
 import banner2 from '../../img/bmw-banner-2.jpg'
 import banner3 from '../../img/virtus.jpg'
 import banner4 from '../../img/bydBanner.jpg'
+import teste from '../../img/semninovos-encerramento.webp'
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -31,16 +32,18 @@ const Home = () => {
         nome: string,
         marca: string,
         ano: number,
-        modelo:string,
-        tipo:string,
-        cor:string,
-        cambio:string,
-        combustivel:string,
+        motor:number,
+        modelo: string,
+        tipo: string,
+        cor: string,
+        cambio: string,
+        combustivel: string,
         quilometragem: number,
+        preço: number,
         ativo: boolean
     }
 
-    const [sellCar, setSellCar] = useState< myCarObject[] >([])
+    const [sellCar, setSellCar] = useState<myCarObject[]>([])
 
     const responsivoBanner = {
         desktop: {
@@ -133,9 +136,9 @@ const Home = () => {
         },
     }));
 
-    useEffect(() =>{
+    useEffect(() => {
         const ativo = true
-        const getCar = async() =>{
+        const getCar = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/car/all/${ativo}`)
                 setSellCar(response.data)
@@ -144,13 +147,13 @@ const Home = () => {
             }
         }
         getCar()
-    },[])
+    }, [])
 
-    useEffect(() =>{
-        if(sellCar.length > 0){
+    useEffect(() => {
+        if (sellCar.length > 0) {
             console.log(sellCar)
         }
-    },[sellCar])
+    }, [sellCar])
 
 
     return (
@@ -177,13 +180,13 @@ const Home = () => {
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
-                        <Button color="inherit" sx={{ marginLeft: 1}}>Comprar</Button>
-                        <Button color="inherit" sx={{ marginLeft:1}}>Vender</Button>
-                        <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", marginLeft: 1}}>Entrar</Button>
+                        <Button color="inherit" sx={{ marginLeft: 1 }}>Comprar</Button>
+                        <Button color="inherit" sx={{ marginLeft: 1 }}>Vender</Button>
+                        <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", marginLeft: 1 }}>Entrar</Button>
                     </Toolbar>
                 </AppBar>
                 <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ marginLeft: 20, marginRight: 20 }}>
-                    <Carousel 
+                    <Carousel
 
                         responsive={responsivoBanner}
                         infinite={true}
@@ -193,12 +196,12 @@ const Home = () => {
                         dotListClass="custom-dot-list-style"
                         itemClass="carousel-item-padding-40-px">
                         <img src={banner} height='90%' width='100%' style={{ marginTop: 30 }} />
-                        <img src={banner2} height='90%' width='100%'  style={{ marginTop: 30 }}/>
-                        <img src={banner3} height='90%' width='100%'  style={{ marginTop: 30 }}/>
-                        <img src={banner4} height='90%' width='100%'  style={{ marginTop: 30 }}/>
+                        <img src={banner2} height='90%' width='100%' style={{ marginTop: 30 }} />
+                        <img src={banner3} height='90%' width='100%' style={{ marginTop: 30 }} />
+                        <img src={banner4} height='90%' width='100%' style={{ marginTop: 30 }} />
                     </Carousel>
                     <Typography variant="h4">Marcas</Typography>
-                    <Carousel 
+                    <Carousel
                         responsive={responsivo}
                         infinite={true}
                         autoPlay={true}
@@ -206,7 +209,7 @@ const Home = () => {
                         keyBoardControl={true}
                         dotListClass="custom-dot-list-style"
                         itemClass="carousel-item-padding-40-px">
-                        <img src={imagem} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid'}} />
+                        <img src={imagem} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
                         <img src={imagem1} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
                         <img src={imagem2} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
                         <img src={imagem3} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
@@ -219,18 +222,24 @@ const Home = () => {
                         <img src={imagem10} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
                     </Carousel>
                     <Typography variant="h4">Carros a venda</Typography>
-                    {sellCar.map((car) => (             
-                                <Card key={car.id} sx={{maxWidth: 300, border: '1px solid'}}>
-                                <CardMedia sx={{ height: 140 }}/>
+                    <Box sx={{ display: 'flex', gap: 2, width: '100' }}>
+                        {sellCar.map((car) => (
+                            <Card key={car.id} sx={{ maxWidth: 300, width: 300, border: '1px solid' }}>
+                                <CardMedia sx={{ height: 140 }} image={teste} />
                                 <CardContent>
                                     <Typography variant="h4">{car.nome}</Typography>
+                                    <Box sx={{ display: 'flex', gap: 1}}>
+                                    <Typography variant="h6">{car.motor}</Typography>
                                     <Typography variant="h6">{car.modelo}</Typography>
+                                    <Typography variant="h6">{car.combustivel}</Typography>
+                                    </Box>
                                     <Typography variant="h6">{car.ano}</Typography>
                                     <Typography variant="h6">km {car.quilometragem}</Typography>
+                                    <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff" }}>Detalhes</Button>
                                 </CardContent>
-                                <Button>Ver Detalhes</Button>
-                            </Card>                    
-                    ))}
+                            </Card>
+                        ))}
+                    </Box>
                 </Grid2>
             </Grid2>
         </Box>
