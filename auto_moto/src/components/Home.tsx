@@ -1,5 +1,8 @@
-import { alpha, AppBar, Box, Button, Card, CardContent, CardMedia, Grid2, InputBase, styled, Toolbar, Typography } from "@mui/material"
+import { alpha, AppBar, Box, Button, Card, CardContent, CardMedia, Container, Grid2, InputBase, styled, Toolbar, Typography } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"
@@ -25,6 +28,7 @@ import axios from "axios";
 
 
 
+
 const Home = () => {
 
     interface myCarObject {
@@ -32,14 +36,14 @@ const Home = () => {
         nome: string,
         marca: string,
         ano: number,
-        motor:number,
+        motor: string,
         modelo: string,
         tipo: string,
         cor: string,
         cambio: string,
         combustivel: string,
-        quilometragem: number,
-        preço: number,
+        quilometragem: string,
+        preço: string,
         ativo: boolean
     }
 
@@ -159,7 +163,7 @@ const Home = () => {
     return (
 
         <Box sx={{ flexGrow: 1 }}>
-            <Grid2 container >
+            <Container >
                 <AppBar position="fixed"
                     sx={{
                         color: "#1a1a1a",
@@ -180,12 +184,12 @@ const Home = () => {
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
-                        <Button color="inherit" sx={{ marginLeft: 1 }}>Comprar</Button>
-                        <Button color="inherit" sx={{ marginLeft: 1 }}>Vender</Button>
+                        <Button color="inherit" sx={{ marginLeft: 1 }} >Comprar</Button>
+                        <Button color="inherit" sx={{ marginLeft: 1 }} >Vender</Button>
                         <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", marginLeft: 1 }}>Entrar</Button>
                     </Toolbar>
                 </AppBar>
-                <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ marginLeft: 20, marginRight: 20 }}>
+                <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{width: '100%', margin: 0}}>
                     <Carousel
 
                         responsive={responsivoBanner}
@@ -200,7 +204,7 @@ const Home = () => {
                         <img src={banner3} height='90%' width='100%' style={{ marginTop: 30 }} />
                         <img src={banner4} height='90%' width='100%' style={{ marginTop: 30 }} />
                     </Carousel>
-                    <Typography variant="h4">Marcas</Typography>
+                    <Typography variant="h4" >Marcas</Typography>
                     <Carousel
                         responsive={responsivo}
                         infinite={true}
@@ -227,21 +231,38 @@ const Home = () => {
                             <Card key={car.id} sx={{ maxWidth: 300, width: 300, border: '1px solid' }}>
                                 <CardMedia sx={{ height: 140 }} image={teste} />
                                 <CardContent>
-                                    <Typography variant="h4">{car.nome}</Typography>
+                                    <Typography variant="h4" sx={{ fontWeight: 'bold'}}>{car.nome}</Typography>
                                     <Box sx={{ display: 'flex', gap: 1}}>
                                     <Typography variant="h6">{car.motor}</Typography>
                                     <Typography variant="h6">{car.modelo}</Typography>
                                     <Typography variant="h6">{car.combustivel}</Typography>
                                     </Box>
+                                    <Typography variant="h6" sx={{mt: 3, fontWeight: 'bold'}}>R$ {car.preço}</Typography>
+                                    
                                     <Typography variant="h6">{car.ano}</Typography>
-                                    <Typography variant="h6">km {car.quilometragem}</Typography>
-                                    <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff" }}>Detalhes</Button>
+                                    <Typography variant="h6">{car.quilometragem} km</Typography>
+                                    
+                                    <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", width: '100%' }}>Detalhes</Button>
                                 </CardContent>
                             </Card>
                         ))}
                     </Box>
                 </Grid2>
-            </Grid2>
+                
+            </Container>
+            <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ backgroundColor: '#3b06b6',  height: 200,  width: '100vw', mt: 2}}>
+                        <Box sx={{ display: 'flex', alignItems: 'center' , justifyContent: 'center', mt: 5}}>
+                        <SportsMotorsportsIcon sx={{  color: '#fff' }} fontSize="large" />
+                        <Typography variant="h4" color="#fff">
+                            AutoMotoShop
+                        </Typography>
+                        </Box>
+                        <Box sx={{ display: 'flex', alignItems: 'center' , justifyContent: 'center', mt: 2}}>
+                            <InstagramIcon sx={{ color: '#fff'}} fontSize="large"/>
+                            <FacebookIcon sx={{ color: '#fff'}} fontSize="large"/>
+                            <LinkedInIcon sx={{ color: '#fff'}} fontSize="large"/>
+                        </Box>
+                </Grid2>
         </Box>
 
     )
