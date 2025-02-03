@@ -18,9 +18,14 @@ import imagem8 from '../../img/logo nissan.jpg'
 import imagem9 from '../../img/Logotipo-da-Ram-2.jpg'
 import imagem10 from '../../img/Mercedes-Benz-Logo.png'
 import banner from '../../img/honda-civic-banner-1.png'
-import banner2 from '../../img/bmw-banner-2.jpg'
-import banner3 from '../../img/virtus.jpg'
-import banner4 from '../../img/bydBanner.jpg'
+import banner1 from '../../img/bmw-banner-2.jpg'
+import banner2 from '../../img/virtus.jpg'
+import banner3 from '../../img/bydBanner.jpg'
+import categ from '../../img/benzSedan.webp'
+import categ1 from '../../img/eletrico.jpg'
+import categ2 from '../../img/picape.jpg'
+import categ3 from '../../img/suv.jpg'
+import categ4 from '../../img/hatch.webp'
 import teste from '../../img/semninovos-encerramento.webp'
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -30,6 +35,35 @@ import axios from "axios";
 
 
 const Home = () => {
+
+    const imagemLogo = [
+        { id: 1, src: imagem },
+        { id: 2, src: imagem1 },
+        { id: 3, src: imagem2 },
+        { id: 4, src: imagem3 },
+        { id: 5, src: imagem4 },
+        { id: 6, src: imagem5 },
+        { id: 7, src: imagem6 },
+        { id: 8, src: imagem7 },
+        { id: 9, src: imagem8 },
+        { id: 10, src: imagem9 },
+        { id: 11, src: imagem10 },
+    ]
+
+    const imagemBanner = [
+        { id: 1, src: banner},
+        { id: 2, src: banner1},
+        { id: 3, src: banner2},
+        { id: 4, src: banner3}
+    ]
+
+    const imagemCategoria = [
+        { id: 1, src: categ, titulo: 'Sedan' },
+        { id: 2, src: categ1, titulo: 'Eletrico' },
+        { id: 3, src: categ2, titulo: 'Picape' },
+        { id: 4, src: categ3, titulo: 'Suv' },
+        { id: 5, src: categ4, titulo: 'Hatch' }
+    ]
 
     interface myCarObject {
         id: string,
@@ -71,6 +105,30 @@ const Home = () => {
             slidesToSlide: 1  // opcional, padrão 1. 
         }
     };
+
+    const responsivoBanner1 = {
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 5,
+            slidesToSlide: 5  // opcional, padrão 1. 
+        },
+        desktop2: {
+            breakpoint: { max: 1440, min: 1095 },
+            items: 5,
+            slidesToSlide: 5  // opcional, padrão 1. 
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 876 },
+            items: 4,
+            slidesToSlide: 4  // opcional, padrão 1. 
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 2,
+            slidesToSlide: 2  // opcional, padrão 1. 
+        }
+    };
+
 
 
 
@@ -189,9 +247,8 @@ const Home = () => {
                         <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", marginLeft: 1 }}>Entrar</Button>
                     </Toolbar>
                 </AppBar>
-                <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{width: '100%', margin: 0}}>
+                <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ width: '100%', margin: 0 }}>
                     <Carousel
-
                         responsive={responsivoBanner}
                         infinite={true}
                         autoPlay={true}
@@ -199,12 +256,13 @@ const Home = () => {
                         keyBoardControl={true}
                         dotListClass="custom-dot-list-style"
                         itemClass="carousel-item-padding-40-px">
-                        <img src={banner} height='90%' width='100%' style={{ marginTop: 30 }} />
-                        <img src={banner2} height='90%' width='100%' style={{ marginTop: 30 }} />
-                        <img src={banner3} height='90%' width='100%' style={{ marginTop: 30 }} />
-                        <img src={banner4} height='90%' width='100%' style={{ marginTop: 30 }} />
+                        {imagemBanner.map((imagem) =>(
+                            <img key={imagem.id} src={imagem.src} height='90%' width='100%' style={{ marginTop: 30 }} />
+                        ))}
+                       
                     </Carousel>
                     <Typography variant="h4" >Marcas</Typography>
+                    <Box sx={{ width: "100%"}}>
                     <Carousel
                         responsive={responsivo}
                         infinite={true}
@@ -213,56 +271,84 @@ const Home = () => {
                         keyBoardControl={true}
                         dotListClass="custom-dot-list-style"
                         itemClass="carousel-item-padding-40-px">
-                        <img src={imagem} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
-                        <img src={imagem1} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
-                        <img src={imagem2} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
-                        <img src={imagem3} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
-                        <img src={imagem4} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
-                        <img src={imagem5} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
-                        <img src={imagem6} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
-                        <img src={imagem7} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
-                        <img src={imagem8} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
-                        <img src={imagem9} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
-                        <img src={imagem10} height='70%' width='95%' style={{ borderRadius: 20, border: '1px solid' }} />
+                        {imagemLogo.map((imagem) => (
+                            <img key={imagem.id} src={imagem.src} height='80%' width='95%' style={{ borderRadius: 20, border: '1px solid', marginTop: 15}} />
+                        ))}      
                     </Carousel>
+                    </Box>
+                    <Typography variant="h4">Categorias</Typography>
+                    <Box sx={{marginTop: 2, marginBottom: 2}}>
+                    <Carousel
+                        responsive={responsivoBanner1}
+                        infinite={true}
+                        autoPlay={false}
+                        autoPlaySpeed={3000}
+                        keyBoardControl={true}
+                        dotListClass="custom-dot-list-style">
+                        {imagemCategoria.map((imagem) => (
+                            <Box key={imagem.id} position="relative" width="100%" height="100%">
+                                <img key={imagem.id} src={imagem.src} width="95%" height='100%' />
+                                <Typography
+                                    variant="h4"
+                                    sx={{
+                                        position: "absolute",
+                                        top: "5%",
+                                        left: "50%",
+                                        transform: "translateX(-50%)",
+                                        fontWeight: 600,
+                                        border: '1px solid',
+                                        color: "white",
+                                        padding: "8px 12px",
+                                        borderRadius: "4px",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    {imagem.titulo}
+                                </Typography>
+                            </Box>
+                        ))}
+
+                    </Carousel>
+                    </Box>
+
                     <Typography variant="h4">Carros a venda</Typography>
                     <Box sx={{ display: 'flex', gap: 2, width: '100' }}>
                         {sellCar.map((car) => (
                             <Card key={car.id} sx={{ maxWidth: 300, width: 300, border: '1px solid' }}>
                                 <CardMedia sx={{ height: 140 }} image={teste} />
                                 <CardContent>
-                                    <Typography variant="h4" sx={{ fontWeight: 'bold'}}>{car.nome}</Typography>
-                                    <Box sx={{ display: 'flex', gap: 1}}>
-                                    <Typography variant="h6">{car.motor}</Typography>
-                                    <Typography variant="h6">{car.modelo}</Typography>
-                                    <Typography variant="h6">{car.combustivel}</Typography>
+                                    <Typography variant="h4" sx={{ fontWeight: 'bold' }}>{car.nome}</Typography>
+                                    <Box sx={{ display: 'flex', gap: 1 }}>
+                                        <Typography variant="h6">{car.motor}</Typography>
+                                        <Typography variant="h6">{car.modelo}</Typography>
+                                        <Typography variant="h6">{car.combustivel}</Typography>
                                     </Box>
-                                    <Typography variant="h6" sx={{mt: 3, fontWeight: 'bold'}}>R$ {car.preço}</Typography>
-                                    
+                                    <Typography variant="h6" sx={{ mt: 3, fontWeight: 'bold' }}>R$ {car.preço}</Typography>
+
                                     <Typography variant="h6">{car.ano}</Typography>
                                     <Typography variant="h6">{car.quilometragem} km</Typography>
-                                    
+
                                     <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", width: '100%' }}>Detalhes</Button>
                                 </CardContent>
                             </Card>
                         ))}
                     </Box>
                 </Grid2>
-                
+
             </Container>
-            <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ backgroundColor: '#3b06b6',  height: 200,  width: '100vw', mt: 2}}>
-                        <Box sx={{ display: 'flex', alignItems: 'center' , justifyContent: 'center', mt: 5}}>
-                        <SportsMotorsportsIcon sx={{  color: '#fff' }} fontSize="large" />
-                        <Typography variant="h4" color="#fff">
-                            AutoMotoShop
-                        </Typography>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center' , justifyContent: 'center', mt: 2}}>
-                            <InstagramIcon sx={{ color: '#fff'}} fontSize="large"/>
-                            <FacebookIcon sx={{ color: '#fff'}} fontSize="large"/>
-                            <LinkedInIcon sx={{ color: '#fff'}} fontSize="large"/>
-                        </Box>
-                </Grid2>
+            <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ backgroundColor: '#3b06b6', height: 200, width: '100vw', mt: 2 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 5 }}>
+                    <SportsMotorsportsIcon sx={{ color: '#fff' }} fontSize="large" />
+                    <Typography variant="h4" color="#fff">
+                        AutoMotoShop
+                    </Typography>
+                </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 2 }}>
+                    <InstagramIcon sx={{ color: '#fff' }} fontSize="large" />
+                    <FacebookIcon sx={{ color: '#fff' }} fontSize="large" />
+                    <LinkedInIcon sx={{ color: '#fff' }} fontSize="large" />
+                </Box>
+            </Grid2>
         </Box>
 
     )
