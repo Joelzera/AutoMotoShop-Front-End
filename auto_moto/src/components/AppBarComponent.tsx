@@ -64,7 +64,7 @@ const AppBarComponent = () => {
                 <Typography variant="h6" flexGrow={0.4}>
                     AutoMotoShop
                 </Typography>
-                <Search sx={{ border: '1px solid #B0B0B0', borderRadius: '4px', flexGrow: 0.2}}>
+                <Search sx={{ border: '2px solid #B0B0B0', borderRadius: '4px', flexGrow: 0.2}}>
                     <SearchIconWrapper>
                         <SearchIcon />
                     </SearchIconWrapper>

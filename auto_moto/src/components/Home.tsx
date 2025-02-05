@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, CardMedia, Container, Grid2, Typography } from "@mui/material"
+import { Avatar, Box, Button, Card, CardContent, CardMedia, Container, Grid2, Typography } from "@mui/material"
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -7,15 +7,15 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"
 import imagem from '../../img/logo bmw.webp'
 import imagem1 from '../../img/logo byd.jpg'
-import imagem2 from '../../img/logo chev.jpg'
-import imagem3 from '../../img/logo ford.webp'
+import imagem2 from '../../img/chevy-logo-2011.png'
+import imagem3 from '../../img/logo ford2.jpg'
 import imagem4 from '../../img/logo honda.jpg'
 import imagem5 from '../../img/logo toyota.webp'
 import imagem6 from '../../img/logo volks.jpg'
-import imagem7 from '../../img/logo fiat.webp'
+import imagem7 from '../../img/fiat-automobiles2240.logowik.com.webp'
 import imagem8 from '../../img/logo nissan.jpg'
 import imagem9 from '../../img/Logotipo-da-Ram-2.jpg'
-import imagem10 from '../../img/Mercedes-Benz-Logo.png'
+import imagem10 from '../../img/mercedes-logo-vetora-136350849.webp'
 import banner from '../../img/banner11.webp'
 import banner1 from '../../img/modelBanner-1.webp'
 import banner2 from '../../img/BannerPicape.webp'
@@ -24,7 +24,7 @@ import categ1 from '../../img/eletrico.jpg'
 import categ2 from '../../img/picape.jpg'
 import categ3 from '../../img/suv.jpg'
 import categ4 from '../../img/hatch.webp'
-import teste from '../../img/semninovos-encerramento.webp'
+import teste from '../../img/melhor-capa-para-carro.jpg'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AppBarComponent from "./AppBarComponent";
@@ -131,8 +131,8 @@ const Home = () => {
     const responsivo = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 8,
-            slidesToSlide: 8  // opcional, padrão 1. 
+            items: 6,
+            slidesToSlide: 6  // opcional, padrão 1. 
         },
         desktop2: {
             breakpoint: { max: 1440, min: 1095 },
@@ -190,7 +190,7 @@ const Home = () => {
                 <AppBarComponent />
                 <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
                     <Box sx={{ mt: 5 }}>
-                        <Typography variant="h4" color="#696969">Marcas</Typography>
+                        <Typography variant="h5" color="#696969" sx={{mb: 5}}>Marcas</Typography>
                         <Carousel
                             arrows={false}
                             responsive={responsivo}
@@ -201,12 +201,12 @@ const Home = () => {
                             dotListClass="custom-dot-list-style"
                             itemClass="carousel-item-padding-40-px">
                             {imagemLogo.map((imagem) => (
-                                <img key={imagem.id} src={imagem.src} height='70%' width='90%' style={{ borderRadius: 20, border: '1px solid', marginTop: 20 }} />
+                                <Avatar key={imagem.id} src={imagem.src} sx={{ width: 150, height: 150, gap: 2, border: '2px solid'}}></Avatar>
                             ))}
                         </Carousel>
                     </Box>
                     <Box sx={{ mt: 5 }}>
-                        <Typography variant="h4" color="#696969">Categorias</Typography>
+                        <Typography variant="h5" color="#696969">Categorias</Typography>
                         <Carousel
                             responsive={responsivoBanner1}
                             infinite={true}
@@ -216,7 +216,7 @@ const Home = () => {
                             dotListClass="custom-dot-list-style">
                             {imagemCategoria.map((imagem) => (
                                 <Box key={imagem.id} position="relative" width="100%" sx={{ height: 200, mt: 5 }}>
-                                    <img key={imagem.id} src={imagem.src} width="95%" height='100%' />
+                                    <img key={imagem.id} src={imagem.src} width="95%" height='100%' style={{ borderRadius: 5}} />
                                     <Typography
                                         variant="h4"
                                         sx={{
@@ -238,7 +238,7 @@ const Home = () => {
                             ))}
                         </Carousel>
                     </Box>
-                    <Typography variant="h4" sx={{ mt: 10 }} color="#696969">Carros a venda</Typography>
+                    <Typography variant="h5" sx={{ mt: 10 }} color="#696969">Carros a venda</Typography>
                     <Box sx={{ display: 'flex', gap: 1, mt: 2, flexWrap: 'wrap' }}>
                         {sellCar.map((car) => (
                             <Card key={car.id} sx={{ maxWidth: 280, width: '100%', border: '1px solid', mt: 2 }}>
