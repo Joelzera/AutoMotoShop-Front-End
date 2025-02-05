@@ -1,9 +1,8 @@
-import { alpha, AppBar, Box, Button, Card, CardContent, CardMedia, Container, Grid2, InputBase, styled, Toolbar, Typography } from "@mui/material"
-import SearchIcon from '@mui/icons-material/Search';
+import { Box, Button, Card, CardContent, CardMedia, Container, Grid2, Typography } from "@mui/material"
+import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"
 import imagem from '../../img/logo bmw.webp'
@@ -17,10 +16,9 @@ import imagem7 from '../../img/logo fiat.webp'
 import imagem8 from '../../img/logo nissan.jpg'
 import imagem9 from '../../img/Logotipo-da-Ram-2.jpg'
 import imagem10 from '../../img/Mercedes-Benz-Logo.png'
-import banner from '../../img/honda-civic-banner-1.png'
-import banner1 from '../../img/bmw-banner-2.jpg'
-import banner2 from '../../img/virtus.jpg'
-import banner3 from '../../img/bydBanner.jpg'
+import banner from '../../img/banner11.webp'
+import banner1 from '../../img/modelBanner-1.webp'
+import banner2 from '../../img/BannerPicape.webp'
 import categ from '../../img/benzSedan.webp'
 import categ1 from '../../img/eletrico.jpg'
 import categ2 from '../../img/picape.jpg'
@@ -29,8 +27,7 @@ import categ4 from '../../img/hatch.webp'
 import teste from '../../img/semninovos-encerramento.webp'
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-
+import AppBarComponent from "./AppBarComponent";
 
 
 
@@ -51,10 +48,9 @@ const Home = () => {
     ]
 
     const imagemBanner = [
-        { id: 1, src: banner},
-        { id: 2, src: banner1},
-        { id: 3, src: banner2},
-        { id: 4, src: banner3}
+        { id: 1, src: banner },
+        { id: 2, src: banner1 },
+        { id: 2, src: banner2 }
     ]
 
     const imagemCategoria = [
@@ -109,13 +105,13 @@ const Home = () => {
     const responsivoBanner1 = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 5,
-            slidesToSlide: 5  // opcional, padrão 1. 
+            items: 4,
+            slidesToSlide: 4  // opcional, padrão 1. 
         },
         desktop2: {
             breakpoint: { max: 1440, min: 1095 },
-            items: 5,
-            slidesToSlide: 5  // opcional, padrão 1. 
+            items: 4,
+            slidesToSlide: 4  // opcional, padrão 1. 
         },
         tablet: {
             breakpoint: { max: 1024, min: 876 },
@@ -135,8 +131,8 @@ const Home = () => {
     const responsivo = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 6,
-            slidesToSlide: 6  // opcional, padrão 1. 
+            items: 8,
+            slidesToSlide: 8  // opcional, padrão 1. 
         },
         desktop2: {
             breakpoint: { max: 1440, min: 1095 },
@@ -155,48 +151,6 @@ const Home = () => {
         }
     };
 
-    const Search = styled('div')(({ theme }) => ({
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: alpha(theme.palette.common.white, 0.25),
-        },
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(1),
-            width: 'auto',
-        },
-    }));
-
-
-    const SearchIconWrapper = styled('div')(({ theme }) => ({
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    }));
-
-    const StyledInputBase = styled(InputBase)(({ theme }) => ({
-        color: 'inherit',
-        width: '100%',
-        '& .MuiInputBase-input': {
-            padding: theme.spacing(1, 1, 1, 0),
-            // vertical padding + font size from searchIcon
-            paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-            transition: theme.transitions.create('width'),
-            [theme.breakpoints.up('sm')]: {
-                width: '12ch',
-                '&:focus': {
-                    width: '20ch',
-                },
-            },
-        },
-    }));
 
     useEffect(() => {
         const ativo = true
@@ -219,122 +173,92 @@ const Home = () => {
 
 
     return (
-
-        <Box sx={{ flexGrow: 1 }}>
+        <Box>
+            <Carousel
+                responsive={responsivoBanner}
+                infinite={true}
+                autoPlay={true}
+                autoPlaySpeed={3000}
+                keyBoardControl={true}
+                dotListClass="custom-dot-list-style"
+                itemClass="carousel-item-padding-40-px">
+                {imagemBanner.map((imagem) => (
+                    <img key={imagem.id} src={imagem.src} height='100%' width='100%' style={{ marginTop: 30 }} />
+                ))}
+            </Carousel>
             <Container >
-                <AppBar position="fixed"
-                    sx={{
-                        color: "#1a1a1a",
-                        backgroundColor: 'white',
-                        boxShadow: 'none',
-                    }}>
-                    <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <SportsMotorsportsIcon sx={{ padding: 1, color: '#3b06b6' }} fontSize="large" />
-                        <Typography variant="h6" >
-                            AutoMotoShop
-                        </Typography>
-                        <Search sx={{ border: '1px solid #B0B0B0', borderRadius: '4px', flexGrow: 0.2 }}>
-                            <SearchIconWrapper>
-                                <SearchIcon />
-                            </SearchIconWrapper>
-                            <StyledInputBase
-                                placeholder="Procurar"
-                                inputProps={{ 'aria-label': 'search' }}
-                            />
-                        </Search>
-                        <Button color="inherit" sx={{ marginLeft: 1 }} >Comprar</Button>
-                        <Button color="inherit" sx={{ marginLeft: 1 }} >Vender</Button>
-                        <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", marginLeft: 1 }}>Entrar</Button>
-                    </Toolbar>
-                </AppBar>
-                <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ width: '100%', margin: 0 }}>
-                    <Carousel
-                        responsive={responsivoBanner}
-                        infinite={true}
-                        autoPlay={true}
-                        autoPlaySpeed={3000}
-                        keyBoardControl={true}
-                        dotListClass="custom-dot-list-style"
-                        itemClass="carousel-item-padding-40-px">
-                        {imagemBanner.map((imagem) =>(
-                            <img key={imagem.id} src={imagem.src} height='90%' width='100%' style={{ marginTop: 30 }} />
-                        ))}
-                       
-                    </Carousel>
-                    <Typography variant="h4" >Marcas</Typography>
-                    <Box sx={{ width: "100%"}}>
-                    <Carousel
-                        responsive={responsivo}
-                        infinite={true}
-                        autoPlay={true}
-                        autoPlaySpeed={3000}
-                        keyBoardControl={true}
-                        dotListClass="custom-dot-list-style"
-                        itemClass="carousel-item-padding-40-px">
-                        {imagemLogo.map((imagem) => (
-                            <img key={imagem.id} src={imagem.src} height='80%' width='95%' style={{ borderRadius: 20, border: '1px solid', marginTop: 15}} />
-                        ))}      
-                    </Carousel>
+                <AppBarComponent />
+                <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
+                    <Box sx={{ mt: 5 }}>
+                        <Typography variant="h4" color="#696969">Marcas</Typography>
+                        <Carousel
+                            arrows={false}
+                            responsive={responsivo}
+                            infinite={true}
+                            autoPlay={true}
+                            autoPlaySpeed={3000}
+                            keyBoardControl={true}
+                            dotListClass="custom-dot-list-style"
+                            itemClass="carousel-item-padding-40-px">
+                            {imagemLogo.map((imagem) => (
+                                <img key={imagem.id} src={imagem.src} height='70%' width='90%' style={{ borderRadius: 20, border: '1px solid', marginTop: 20 }} />
+                            ))}
+                        </Carousel>
                     </Box>
-                    <Typography variant="h4">Categorias</Typography>
-                    <Box sx={{marginTop: 2, marginBottom: 2}}>
-                    <Carousel
-                        responsive={responsivoBanner1}
-                        infinite={true}
-                        autoPlay={false}
-                        autoPlaySpeed={3000}
-                        keyBoardControl={true}
-                        dotListClass="custom-dot-list-style">
-                        {imagemCategoria.map((imagem) => (
-                            <Box key={imagem.id} position="relative" width="100%" height="100%">
-                                <img key={imagem.id} src={imagem.src} width="95%" height='100%' />
-                                <Typography
-                                    variant="h4"
-                                    sx={{
-                                        position: "absolute",
-                                        top: "5%",
-                                        left: "50%",
-                                        transform: "translateX(-50%)",
-                                        fontWeight: 600,
-                                        border: '1px solid',
-                                        color: "white",
-                                        padding: "8px 12px",
-                                        borderRadius: "4px",
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    {imagem.titulo}
-                                </Typography>
-                            </Box>
-                        ))}
-
-                    </Carousel>
+                    <Box sx={{ mt: 5 }}>
+                        <Typography variant="h4" color="#696969">Categorias</Typography>
+                        <Carousel
+                            responsive={responsivoBanner1}
+                            infinite={true}
+                            autoPlay={false}
+                            autoPlaySpeed={3000}
+                            keyBoardControl={true}
+                            dotListClass="custom-dot-list-style">
+                            {imagemCategoria.map((imagem) => (
+                                <Box key={imagem.id} position="relative" width="100%" sx={{ height: 200, mt: 5 }}>
+                                    <img key={imagem.id} src={imagem.src} width="95%" height='100%' />
+                                    <Typography
+                                        variant="h4"
+                                        sx={{
+                                            position: "absolute",
+                                            top: "5%",
+                                            left: "50%",
+                                            transform: "translateX(-50%)",
+                                            fontWeight: 600,
+                                            border: '1px solid',
+                                            color: "white",
+                                            padding: "8px 12px",
+                                            borderRadius: "4px",
+                                            textAlign: "center",
+                                        }}
+                                    >
+                                        {imagem.titulo}
+                                    </Typography>
+                                </Box>
+                            ))}
+                        </Carousel>
                     </Box>
-
-                    <Typography variant="h4">Carros a venda</Typography>
-                    <Box sx={{ display: 'flex', gap: 2, width: '100' }}>
+                    <Typography variant="h4" sx={{ mt: 10 }} color="#696969">Carros a venda</Typography>
+                    <Box sx={{ display: 'flex', gap: 1, mt: 2, flexWrap: 'wrap' }}>
                         {sellCar.map((car) => (
-                            <Card key={car.id} sx={{ maxWidth: 300, width: 300, border: '1px solid' }}>
+                            <Card key={car.id} sx={{ maxWidth: 280, width: '100%', border: '1px solid', mt: 2 }}>
                                 <CardMedia sx={{ height: 140 }} image={teste} />
                                 <CardContent>
                                     <Typography variant="h4" sx={{ fontWeight: 'bold' }}>{car.nome}</Typography>
                                     <Box sx={{ display: 'flex', gap: 1 }}>
-                                        <Typography variant="h6">{car.motor}</Typography>
-                                        <Typography variant="h6">{car.modelo}</Typography>
-                                        <Typography variant="h6">{car.combustivel}</Typography>
+                                        <Typography variant="h6" color="#696969">{car.motor}</Typography>
+                                        <Typography variant="h6" color="#696969">{car.modelo}</Typography>
+                                        <Typography variant="h6" color="#696969">{car.combustivel}</Typography>
                                     </Box>
                                     <Typography variant="h6" sx={{ mt: 3, fontWeight: 'bold' }}>R$ {car.preço}</Typography>
-
-                                    <Typography variant="h6">{car.ano}</Typography>
-                                    <Typography variant="h6">{car.quilometragem} km</Typography>
-
+                                    <Typography variant="h6" color="#696969">{car.ano}</Typography>
+                                    <Typography variant="h6" color="#696969">{car.quilometragem} km</Typography>
                                     <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", width: '100%' }}>Detalhes</Button>
                                 </CardContent>
                             </Card>
                         ))}
                     </Box>
                 </Grid2>
-
             </Container>
             <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ backgroundColor: '#3b06b6', height: 200, width: '100vw', mt: 2 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 5 }}>
