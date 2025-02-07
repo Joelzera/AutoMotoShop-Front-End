@@ -61,7 +61,11 @@ const AppBarComponent = () => {
         if (!search) {
             return
         }
+        localStorage.setItem('search', search)
         navigate('/search')
+        setTimeout(() => {
+            window.location.reload()
+        }, 500)
     }
 
     return (
@@ -77,7 +81,7 @@ const AppBarComponent = () => {
                 <Typography variant="h6" fontWeight={800} flexGrow={0.4}>
                     AutoMotoShop
                 </Typography>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} style={{width: 400}}>
                     <Search sx={{ border: '2px solid #B0B0B0', borderRadius: '4px', flexGrow: 0.2 }}>
                         <SearchIconWrapper>
                             <SearchIcon />
