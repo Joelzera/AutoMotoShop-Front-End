@@ -6,7 +6,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"
 import imagem from '../../img/logo bmw.webp'
-import imagem1 from '../../img/logo byd.jpg'
+import imagem1 from '../../img/bydlogo.jpg'
 import imagem2 from '../../img/chevy-logo-2011.png'
 import imagem3 from '../../img/logo ford2.jpg'
 import imagem4 from '../../img/logo honda.jpg'
@@ -16,6 +16,7 @@ import imagem7 from '../../img/fiat-automobiles2240.logowik.com.webp'
 import imagem8 from '../../img/logo nissan.jpg'
 import imagem9 from '../../img/Logotipo-da-Ram-2.jpg'
 import imagem10 from '../../img/mercedes-logo-vetora-136350849.webp'
+import imagem11 from '../../img/logohyundai.jpg'
 import banner from '../../img/banner11.webp'
 import banner1 from '../../img/modelBanner-1.webp'
 import banner2 from '../../img/BannerPicape.webp'
@@ -27,7 +28,8 @@ import categ4 from '../../img/hatch.webp'
 import teste from '../../img/melhor-capa-para-carro.jpg'
 import { useEffect, useState } from "react";
 import axios from "axios";
-import AppBarComponent from "./AppBarComponent";
+import AppBarComponent from "../components/AppBarComponent";
+
 
 
 
@@ -45,6 +47,7 @@ const Home = () => {
         { id: 9, src: imagem8 },
         { id: 10, src: imagem9 },
         { id: 11, src: imagem10 },
+        { id: 12, src: imagem11 },
     ]
 
     const imagemBanner = [
@@ -173,8 +176,8 @@ const Home = () => {
 
 
     return (
-        <Box>
-            <Carousel
+        <>
+        <Carousel
                 responsive={responsivoBanner}
                 infinite={true}
                 autoPlay={true}
@@ -201,7 +204,7 @@ const Home = () => {
                             dotListClass="custom-dot-list-style"
                             itemClass="carousel-item-padding-40-px">
                             {imagemLogo.map((imagem) => (
-                                <Avatar key={imagem.id} src={imagem.src} sx={{ width: 150, height: 150, gap: 2, border: '2px solid'}}></Avatar>
+                                <Avatar key={imagem.id} src={imagem.src} sx={{ width: 150, height: 150, gap: 2, border: '1px solid'}}></Avatar>
                             ))}
                         </Carousel>
                     </Box>
@@ -273,7 +276,7 @@ const Home = () => {
                     <LinkedInIcon sx={{ color: '#fff' }} fontSize="large" />
                 </Box>
             </Grid2>
-        </Box>
+        </>
 
     )
 }
