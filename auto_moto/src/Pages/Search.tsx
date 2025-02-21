@@ -1,9 +1,10 @@
-import { Box, Button, Card, CardContent, Container, Grid2, Typography } from "@mui/material"
+import { Box, Button, Card, CardContent, CardMedia, Container, Grid2, Typography } from "@mui/material"
 import AppBarComponent from "../components/AppBarComponent"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import teste from '../../img/melhor-capa-para-carro.jpg'
 
 const Search = () =>{
 
@@ -46,15 +47,13 @@ const Search = () =>{
     return(
         <>
         <AppBarComponent/>
-        <Container>
-        <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
-           
-            <Box sx={{ mt: 10}}>
-            <Button variant="contained" onClick={() => navigate('/')} startIcon={<ArrowBackIcon/>}  sx={{ backgroundColor: '#3b06b6', color: "fff" }}>Voltar</Button>
-                <Typography variant='h4'>Resultados para: {searchCar}</Typography>
+        <Container sx={{}}>
+        <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>          
+            <Button variant="contained" onClick={() => navigate('/')} startIcon={<ArrowBackIcon/>}  sx={{ backgroundColor: '#3b06b6', color: "fff" , mt:10}}>Voltar</Button>
+            <Box sx={{ mt: 5, display: 'flex', flexWrap: 'wrap', gap: 2}}>               
                 {cars.map((car) =>(
-                    <Card key={car.id} sx={{ maxWidth: 280, width: '100%', border: '1px solid', mt: 2 }}>
-                  
+                    <Card key={car.id} sx={{ maxWidth: 270, width: '100%', border: '1px solid', mt: 2 }}>
+                         <CardMedia sx={{ height: 140 }} image={teste} />
                     <CardContent>
                         <Typography variant="h4" sx={{ fontWeight: 'bold' }}>{car.nome}</Typography>
                         <Box sx={{ display: 'flex', gap: 1 }}>
