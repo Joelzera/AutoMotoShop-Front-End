@@ -27,12 +27,13 @@ const Search = () =>{
     const navigate = useNavigate()
     
     const searchCar = localStorage.getItem('search')
+    const searchCarlower = searchCar?.toLowerCase()
 
     useEffect(() =>{
         
         const getCarName = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/car/${searchCar}`)
+                const response = await axios.get(`http://localhost:5000/car/${searchCarlower}`)
                 console.log(response.data)
                 setCars(response.data)
             } catch (error) {
@@ -47,7 +48,7 @@ const Search = () =>{
     return(
         <>
         <AppBarComponent/>
-        <Container sx={{}}>
+        <Container>
         <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>          
             <Button variant="contained" onClick={() => navigate('/')} startIcon={<ArrowBackIcon/>}  sx={{ backgroundColor: '#3b06b6', color: "fff" , mt:10}}>Voltar</Button>
             <Box sx={{ mt: 5, display: 'flex', flexWrap: 'wrap', gap: 2}}>               
