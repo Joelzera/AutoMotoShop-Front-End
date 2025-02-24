@@ -94,8 +94,8 @@ const AppBarComponent = () => {
                     </Search>
                 </form>
                 <Box sx={{ flexGrow: 0.5 }}>
-                    <Button sx={{ marginLeft: 1, fontFamily: 'cursive', color: '#a0a0a0', fontWeight: 700 }} onClick={() => navigate('/comprar')} >Comprar</Button>
-                    <Button sx={{ marginLeft: 1, fontFamily: 'cursive', color: '#a0a0a0', fontWeight: 700 }} onClick={() => navigate('/vender')}>Vender</Button>
+                    <Button sx={{ marginLeft: 1, fontFamily: 'cursive', color: '#a0a0a0', fontWeight: 700 }} onClick={() => navigate('/comprar')}>Comprar</Button>
+                    <Button sx={{ marginLeft: 1, fontFamily: 'cursive', color: '#a0a0a0', fontWeight: 700 }}  onClick={() => navigate('/vender')}>Vender</Button>
                 </Box>
                 <Button variant="contained" size="small" sx={{ backgroundColor: '#3b06b6', color: "fff", fontFamily: 'cursive' }}  onClick={() => navigate('/login')}>Entrar</Button>
             </Toolbar>
