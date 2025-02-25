@@ -2,9 +2,8 @@ import { Box, Button, Card, CardContent, CardMedia, Container, Grid2, Typography
 import AppBarComponent from "../components/AppBarComponent"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import teste from '../../img/melhor-capa-para-carro.jpg'
+import ButtonMenu from "../components/ButtonMenu"
 
 const Search = () =>{
 
@@ -24,7 +23,6 @@ const Search = () =>{
         ativo: boolean
     }
     const [cars , setCars] = useState<myCarObject[]>([])
-    const navigate = useNavigate()
     
     const searchCar = localStorage.getItem('search')
     const searchCarlower = searchCar?.toLowerCase()
@@ -50,7 +48,7 @@ const Search = () =>{
         <AppBarComponent/>
         <Container>
         <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>          
-            <Button variant="contained" onClick={() => navigate('/')} startIcon={<ArrowBackIcon/>}  sx={{ backgroundColor: '#3b06b6', color: "fff" , mt:10}}>Voltar</Button>
+            <ButtonMenu/>
             <Box sx={{ mt: 5, display: 'flex', flexWrap: 'wrap', gap: 2}}>               
                 {cars.map((car) =>(
                     <Card key={car.id} sx={{ maxWidth: 270, width: '100%', border: '1px solid', mt: 2 }}>

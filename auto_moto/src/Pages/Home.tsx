@@ -29,6 +29,7 @@ import teste from '../../img/melhor-capa-para-carro.jpg'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AppBarComponent from "../components/AppBarComponent";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -174,6 +175,8 @@ const Home = () => {
         }
     }, [sellCar])
 
+    const navigate = useNavigate()
+
 
     return (
         <>
@@ -204,7 +207,7 @@ const Home = () => {
                             dotListClass="custom-dot-list-style"
                             itemClass="carousel-item-padding-40-px">
                             {imagemLogo.map((imagem) => (
-                                <Avatar key={imagem.id} src={imagem.src} sx={{ width: 150, height: 150, gap: 2, border: '1px solid'}}></Avatar>
+                                <Avatar key={imagem.id} src={imagem.src} onClick={() => navigate('/marcas')}  sx={{ width: 150, height: 150, gap: 2, border: '1px solid', cursor: 'pointer'}}></Avatar>
                             ))}
                         </Carousel>
                     </Box>
@@ -219,7 +222,7 @@ const Home = () => {
                             dotListClass="custom-dot-list-style">
                             {imagemCategoria.map((imagem) => (
                                 <Box key={imagem.id} position="relative" width="100%" sx={{ height: 200, mt: 5 }}>
-                                    <img key={imagem.id} src={imagem.src} width="95%" height='100%' style={{ borderRadius: 5}} />
+                                    <img key={imagem.id} src={imagem.src} width="95%" height='100%' style={{ borderRadius: 5, cursor: 'pointer'}} onClick={() => navigate('/categorias')}/>
                                     <Typography
                                         variant="h4"
                                         sx={{
