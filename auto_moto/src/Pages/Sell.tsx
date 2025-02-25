@@ -1,21 +1,21 @@
-import { Button, Container, Grid2 } from "@mui/material"
+import { Container, Grid2, Typography } from "@mui/material"
 import AppBarComponent from "../components/AppBarComponent"
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useNavigate } from "react-router-dom"
+import ButtonMenu from "../components/ButtonMenu";
 
 
 
 
 const Sell = () => {
 
-    const navigate = useNavigate()
+
 
     return(
         <>
         <AppBarComponent/>
         <Container>
             <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
-            <Button variant="contained" onClick={() => navigate('/')} startIcon={<ArrowBackIcon/>}  sx={{ backgroundColor: '#3b06b6', color: "fff" , mt:10}}>Voltar</Button>
+            <ButtonMenu/>
+            <Typography>Vender</Typography>
             </Grid2>
         </Container>
         </>

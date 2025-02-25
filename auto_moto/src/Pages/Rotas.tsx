@@ -4,6 +4,8 @@ import Search from './Search';
 import Buy from './Buy';
 import Sell from './Sell';
 import Login from './Login';
+import Brands from './Brands';
+import Category from './Category';
 
 
 const rotas = () => {
@@ -15,6 +17,8 @@ const rotas = () => {
                 <Route path='/comprar' element={<Buy />} />
                 <Route path='/vender' element={<Sell />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/marcas' element={<Brands />} />
+                <Route path='/categorias' element={<Category />} />
             </Routes>
         </Router>
 

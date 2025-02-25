@@ -3,8 +3,7 @@ import AppBarComponent from "../components/AppBarComponent"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import teste from '../../img/melhor-capa-para-carro.jpg'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useNavigate } from "react-router-dom"
+import ButtonMenu from "../components/ButtonMenu"
 
 
 
@@ -27,7 +26,6 @@ const Buy = () => {
     }
 
     const [sellCar, setSellCar] = useState<myCarObject[]>([])
-    const navigate = useNavigate()
 
     useEffect(() => {
         const ativo = true
@@ -48,7 +46,7 @@ const Buy = () => {
         <AppBarComponent/>
         <Container>
             <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
-            <Button variant="contained" onClick={() => navigate('/')} startIcon={<ArrowBackIcon/>}  sx={{ backgroundColor: '#3b06b6', color: "fff" , mt:10}}>Voltar</Button>
+            <ButtonMenu/>
             <Box sx={{ display: 'flex', gap: 1, mt: 2, flexWrap: 'wrap' }}>
                         {sellCar.map((car) => (
                             <Card key={car.id} sx={{ maxWidth: 280, width: '100%', border: '1px solid', mt: 2 }}>
