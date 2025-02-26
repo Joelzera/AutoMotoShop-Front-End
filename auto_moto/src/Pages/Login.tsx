@@ -2,11 +2,28 @@ import { AppBar, Box, Button, Card, CardContent, Grid2, TextField, Toolbar, Typo
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 
 const Login = () => {
 
     const navigate = useNavigate()
+
+    const [login, setLogin] = useState({email: '', password: ''})
+
+    const onSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        try {
+            const response = await axios.post(`http://localhost:5000/user/login`, login)
+            console.log(response.data)
+             /*if(response){
+                navigate('/')
+            }*/
+        } catch (error) {
+            console.log(error, 'nao foi possivel entrar na conta')
+        }
+    }
 
     return (
         <>
@@ -36,9 +53,11 @@ const Login = () => {
                                 </Typography>
                             </Box>
                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 5 }}>
-                                <TextField label='E-mail' sx={{ mt: 2 }}/>
-                                <TextField label='Senha' sx={{ mt: 2 }}/>
-                                <Button variant="contained" sx={{ backgroundColor: '#3b06b6', mt: 2, width: '100%' }}>Entrar</Button>
+                                <form onSubmit={onSubmitLogin}>
+                                <TextField id="email" label='E-mail' sx={{ mt: 2 , width: '100%'}} onChange={(e) => setLogin({...login, email: e.target.value})}/>
+                                <TextField id="password" label='Senha' sx={{ mt: 2,  width: '100%'}} onChange={(e) => setLogin({...login, password: e.target.value})}/>
+                                <Button variant="contained" type="submit" sx={{ backgroundColor: '#3b06b6', mt: 2, width: '100%' }}>Entrar</Button>
+                                </form>
                             </Box>
                         </CardContent>
                     </Card>
