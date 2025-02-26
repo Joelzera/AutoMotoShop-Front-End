@@ -4,7 +4,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { useNavigate } from "react-router-dom";
 
 
-const Login = () => {
+const Register = () => {
 
     const navigate = useNavigate()
 
@@ -22,7 +22,7 @@ const Login = () => {
                     <Typography variant="h6" fontWeight={800} flexGrow={1}>
                         AutoMotoShop
                     </Typography>
-                    <Button variant="contained" onClick={() => navigate('/cadastro')} sx={{ backgroundColor: '#3b06b6', color: "fff" }}>Cadastrar</Button>
+                    <Button variant="contained" onClick={() => navigate('/login')}  sx={{ backgroundColor: '#3b06b6', color: "fff" }}>Entrar</Button>
                 </Toolbar>
             </AppBar>
             <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
@@ -32,13 +32,14 @@ const Login = () => {
                         <CardContent>
                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                             <Typography variant="h5">
-                                    Acesse a sua conta
+                                    Faça seu cadastro
                                 </Typography>
                             </Box>
                             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 5 }}>
+                                <TextField label='Nome' sx={{ mt: 2 }}/>
                                 <TextField label='E-mail' sx={{ mt: 2 }}/>
                                 <TextField label='Senha' sx={{ mt: 2 }}/>
-                                <Button variant="contained" sx={{ backgroundColor: '#3b06b6', mt: 2, width: '100%' }}>Entrar</Button>
+                                <Button variant="contained" sx={{ backgroundColor: '#3b06b6', mt: 2, width: '100%' }}>Cadastrar-se</Button>
                             </Box>
                         </CardContent>
                     </Card>
@@ -48,4 +49,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Register
