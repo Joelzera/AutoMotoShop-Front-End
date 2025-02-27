@@ -26,7 +26,7 @@ const Register = () => {
     }
 
     return (
-        <>
+        <Grid2 sx={{backgroundColor: '#ECEDF2', height: '100vh', mt: -2}}>
             <AppBar position="fixed"
                 sx={{
                     color: "#1a1a1a",
@@ -64,7 +64,7 @@ const Register = () => {
                     </Card>
                 </Box>
             </Grid2>
-        </>
+        </Grid2>
     )
 }
 

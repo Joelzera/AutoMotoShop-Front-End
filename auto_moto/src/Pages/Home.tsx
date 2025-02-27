@@ -75,7 +75,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-
 const Home = () => {
 
     const imagemLogo = [
@@ -171,9 +170,6 @@ const Home = () => {
         }
     };
 
-
-
-
     const responsivo = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
@@ -197,7 +193,6 @@ const Home = () => {
         }
     };
 
-
     useEffect(() => {
         const ativo = true
         const getCar = async () => {
@@ -217,8 +212,6 @@ const Home = () => {
         }
     }, [sellCar])
 
-
-
     const [search, setSearch] = useState('')
     const navigate = useNavigate()
 
@@ -235,9 +228,8 @@ const Home = () => {
         }, 500)
     }
 
-
     return (
-        <>
+        <Grid2 sx={{backgroundColor: '#ECEDF2'}}>
             <Carousel
                 responsive={responsivoBanner}
                 infinite={true}
@@ -253,29 +245,29 @@ const Home = () => {
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 5 }}>
                 <Card sx={{ position: 'absolute', width: '62%' }}>
                     <CardContent>
-                        <Typography variant="h5"> Bem vindo</Typography>
-                        <form onSubmit={handleSubmit} style={{ width: 400 }}>
-                            <Search sx={{ border: '2px solid #B0B0B0', borderRadius: '4px', flexGrow: 0.2 }}>
-                                <SearchIconWrapper>
-                                    <SearchIcon />
-                                </SearchIconWrapper>
-                                <StyledInputBase
-                                    placeholder='Procurar'
-                                    onChange={(e) => setSearch(e.target.value)}
-                                    value={search}
-                                />
-                            </Search>
-                        </form>
-                        <Button sx={{ marginLeft: 1, backgroundColor: '#3b06b6', color: '#fff', fontWeight: 700 }} onClick={() => navigate('/comprar')}>Comprar</Button>
-                        <Button sx={{ marginLeft: 1, backgroundColor: '#3b06b6', color: '#fff', fontWeight: 700 }} onClick={() => navigate('/vender')}>Vender</Button>
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Typography variant="h3" color="#696969">As melhores ofertas voce encontra aqui!</Typography>
+                        </Box>
+                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 2 }}>
+                            <form onSubmit={handleSubmit} style={{ width: 560 }}>
+                                <Search sx={{ border: '1px solid', borderRadius: '4px', height: 38 }}>
+                                    <SearchIconWrapper>
+                                        <SearchIcon />
+                                    </SearchIconWrapper>
+                                    <StyledInputBase
+                                        placeholder='Procurar'
+                                        onChange={(e) => setSearch(e.target.value)}
+                                        value={search}
+                                    />
+                                </Search>
+                            </form>
+                            <Button sx={{ marginLeft: 1, backgroundColor: '#3b06b6', color: '#fff', fontWeight: 700, width: 300, height: 40 }} onClick={() => navigate('/comprar')}>Ver ofertas</Button>
+                        </Box>
                     </CardContent>
                 </Card>
             </Box>
             <Container >
                 <AppBarComponent />
-
-                <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
-
                     <Box sx={{ mt: 20 }}>
                         <Typography variant="h5" color="#696969" sx={{ mb: 5 }}>Marcas</Typography>
                         <Carousel
@@ -345,7 +337,6 @@ const Home = () => {
                             </Card>
                         ))}
                     </Box>
-                </Grid2>
             </Container>
             <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ backgroundColor: '#3b06b6', height: 200, width: '100vw', mt: 2 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 5 }}>
@@ -360,8 +351,7 @@ const Home = () => {
                     <LinkedInIcon sx={{ color: '#fff' }} fontSize="large" />
                 </Box>
             </Grid2>
-        </>
-
+        </Grid2>
     )
 }
 

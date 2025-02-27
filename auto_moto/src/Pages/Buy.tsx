@@ -1,9 +1,10 @@
-import { Box, Button, Card, CardContent, CardMedia, Container, Grid2, Typography } from "@mui/material"
-import AppBarComponent from "../components/AppBarComponent"
+import { AppBar, Box, Button, Card, CardContent, CardMedia, Container, Grid2, Toolbar, Typography } from "@mui/material"
+import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import axios from "axios"
 import { useEffect, useState } from "react"
 import teste from '../../img/melhor-capa-para-carro.jpg'
 import ButtonMenu from "../components/ButtonMenu"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -26,6 +27,7 @@ const Buy = () => {
     }
 
     const [sellCar, setSellCar] = useState<myCarObject[]>([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         const ativo = true
@@ -41,11 +43,26 @@ const Buy = () => {
     }, [])
 
 
+
     return(
-        <>
-        <AppBarComponent/>
+        <Grid2 sx={{backgroundColor: '#ECEDF2', height: '100vh', mt: -2}}>
+         <AppBar position="fixed"
+                sx={{
+                    color: "#1a1a1a",
+                    backgroundColor: 'white',
+                    boxShadow: 'none',
+                    border: '1px solid'
+                }}>
+                <Toolbar>
+                    <SportsMotorsportsIcon sx={{ padding: 1, color: '#3b06b6' }} fontSize="large" />
+                    <Typography variant="h6" fontWeight={800} flexGrow={1}>
+                        AutoMotoShop
+                    </Typography>
+                    <Button variant="contained" onClick={() => navigate('/login')}  sx={{ backgroundColor: '#3b06b6', color: "fff" }}>Entrar</Button>
+                </Toolbar>
+            </AppBar>
         <Container>
-            <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
+          
             <ButtonMenu/>
             <Box sx={{ display: 'flex', gap: 1, mt: 2, flexWrap: 'wrap' }}>
                         {sellCar.map((car) => (
@@ -66,9 +83,9 @@ const Buy = () => {
                             </Card>
                         ))}
                     </Box>
-            </Grid2>
+           
         </Container>
-        </>
+        </Grid2>
     )
 }
 
