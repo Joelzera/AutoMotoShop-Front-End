@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Card, CardContent, CardMedia, Container, Grid2, Typography } from "@mui/material"
+import { alpha, Avatar, Box, Button, Card, CardContent, CardMedia, Container, Grid2, InputBase, styled, Typography } from "@mui/material"
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -30,8 +30,50 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AppBarComponent from "../components/AppBarComponent";
 import { useNavigate } from "react-router-dom";
+import SearchIcon from '@mui/icons-material/Search';
+
+const Search = styled('div')(({ theme }) => ({
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    '&:hover': {
+        backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(1),
+        width: 'auto',
+    },
+}));
 
 
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: 'inherit',
+    width: '100%',
+    '& .MuiInputBase-input': {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+        transition: theme.transitions.create('width'),
+        [theme.breakpoints.up('sm')]: {
+            width: '12ch',
+            '&:focus': {
+                width: '20ch',
+            },
+        },
+    },
+}));
 
 
 const Home = () => {
@@ -175,12 +217,28 @@ const Home = () => {
         }
     }, [sellCar])
 
+
+
+    const [search, setSearch] = useState('')
     const navigate = useNavigate()
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        console.log(search)
+        if (!search) {
+            return
+        }
+        localStorage.setItem('search', search)
+        navigate('/search')
+        setTimeout(() => {
+            window.location.reload()
+        }, 500)
+    }
 
 
     return (
         <>
-        <Carousel
+            <Carousel
                 responsive={responsivoBanner}
                 infinite={true}
                 autoPlay={true}
@@ -192,11 +250,34 @@ const Home = () => {
                     <img key={imagem.id} src={imagem.src} height='100%' width='100%' style={{ marginTop: 30 }} />
                 ))}
             </Carousel>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 5 }}>
+                <Card sx={{ position: 'absolute', width: '62%' }}>
+                    <CardContent>
+                        <Typography variant="h5"> Bem vindo</Typography>
+                        <form onSubmit={handleSubmit} style={{ width: 400 }}>
+                            <Search sx={{ border: '2px solid #B0B0B0', borderRadius: '4px', flexGrow: 0.2 }}>
+                                <SearchIconWrapper>
+                                    <SearchIcon />
+                                </SearchIconWrapper>
+                                <StyledInputBase
+                                    placeholder='Procurar'
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    value={search}
+                                />
+                            </Search>
+                        </form>
+                        <Button sx={{ marginLeft: 1, backgroundColor: '#3b06b6', color: '#fff', fontWeight: 700 }} onClick={() => navigate('/comprar')}>Comprar</Button>
+                        <Button sx={{ marginLeft: 1, backgroundColor: '#3b06b6', color: '#fff', fontWeight: 700 }} onClick={() => navigate('/vender')}>Vender</Button>
+                    </CardContent>
+                </Card>
+            </Box>
             <Container >
                 <AppBarComponent />
+
                 <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
-                    <Box sx={{ mt: 5 }}>
-                        <Typography variant="h5" color="#696969" sx={{mb: 5}}>Marcas</Typography>
+
+                    <Box sx={{ mt: 20 }}>
+                        <Typography variant="h5" color="#696969" sx={{ mb: 5 }}>Marcas</Typography>
                         <Carousel
                             arrows={false}
                             responsive={responsivo}
@@ -207,7 +288,7 @@ const Home = () => {
                             dotListClass="custom-dot-list-style"
                             itemClass="carousel-item-padding-40-px">
                             {imagemLogo.map((imagem) => (
-                                <Avatar key={imagem.id} src={imagem.src} onClick={() => navigate('/marcas')}  sx={{ width: 150, height: 150, gap: 2, border: '1px solid', cursor: 'pointer'}}></Avatar>
+                                <Avatar key={imagem.id} src={imagem.src} onClick={() => navigate('/marcas')} sx={{ width: 150, height: 150, gap: 2, border: '1px solid', cursor: 'pointer' }}></Avatar>
                             ))}
                         </Carousel>
                     </Box>
@@ -222,7 +303,7 @@ const Home = () => {
                             dotListClass="custom-dot-list-style">
                             {imagemCategoria.map((imagem) => (
                                 <Box key={imagem.id} position="relative" width="100%" sx={{ height: 200, mt: 5 }}>
-                                    <img key={imagem.id} src={imagem.src} width="95%" height='100%' style={{ borderRadius: 5, cursor: 'pointer'}} onClick={() => navigate('/categorias')}/>
+                                    <img key={imagem.id} src={imagem.src} width="95%" height='100%' style={{ borderRadius: 5, cursor: 'pointer' }} onClick={() => navigate('/categorias')} />
                                     <Typography
                                         variant="h4"
                                         sx={{
