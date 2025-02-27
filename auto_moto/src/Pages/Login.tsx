@@ -26,7 +26,7 @@ const Login = () => {
     }
 
     return (
-        <>
+        <Grid2 sx={{backgroundColor: '#ECEDF2', height: '100vh', mt: -2}}>
             <AppBar position="fixed"
                 sx={{
                     color: "#1a1a1a",
@@ -42,7 +42,7 @@ const Login = () => {
                     <Button variant="contained" onClick={() => navigate('/cadastro')} sx={{ backgroundColor: '#3b06b6', color: "fff" }}>Cadastrar</Button>
                 </Toolbar>
             </AppBar>
-            <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
+            
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 10 }}>
                     <Card sx={{ mt: 10, border: '1px solid', maxWidth: 400 }}>
                     <ClearIcon onClick={() => navigate('/')} sx={{ cursor: 'pointer', padding: 2}}/>
@@ -62,8 +62,8 @@ const Login = () => {
                         </CardContent>
                     </Card>
                 </Box>
-            </Grid2>
-        </>
+           
+        </Grid2>
     )
 }
 

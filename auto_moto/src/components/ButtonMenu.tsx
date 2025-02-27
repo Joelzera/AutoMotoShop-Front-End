@@ -7,7 +7,7 @@ const ButtonMenu = () => {
     const navigate = useNavigate()
 
     return(
-        <Button variant="contained" onClick={() => navigate('/')} startIcon={<ArrowBackIcon/>}  sx={{ backgroundColor: '#3b06b6', color: "fff" , mt:10}}>Menu</Button>
+        <Button variant="contained" onClick={() => navigate('/')} startIcon={<ArrowBackIcon/>}  sx={{ backgroundColor: '#3b06b6', color: "fff" , mt:15}}>Menu</Button>
     )
 }
 
