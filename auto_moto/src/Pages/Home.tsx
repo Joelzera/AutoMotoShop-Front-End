@@ -1,4 +1,4 @@
-import { alpha, Avatar, Box, Button, Card, CardContent, CardMedia, Container, Grid2, InputBase, styled, Typography } from "@mui/material"
+import {  Avatar, Box, Button, Card, CardContent, CardMedia, Container, Grid2, Typography } from "@mui/material"
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -30,66 +30,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AppBarComponent from "../components/AppBarComponent";
 import { useNavigate } from "react-router-dom";
-import SearchIcon from '@mui/icons-material/Search';
 
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-    },
-}));
-
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    width: '100%',
-    '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        [theme.breakpoints.up('sm')]: {
-            width: '12ch',
-            '&:focus': {
-                width: '20ch',
-            },
-        },
-    },
-}));
 
 const Home = () => {
 
     const imagemLogo = [
-        { id: 1, src: imagem },
-        { id: 2, src: imagem1 },
-        { id: 3, src: imagem2 },
-        { id: 4, src: imagem3 },
-        { id: 5, src: imagem4 },
-        { id: 6, src: imagem5 },
-        { id: 7, src: imagem6 },
-        { id: 8, src: imagem7 },
-        { id: 9, src: imagem8 },
-        { id: 10, src: imagem9 },
-        { id: 11, src: imagem10 },
-        { id: 12, src: imagem11 },
+        { id: 1, src: imagem, marca: 'bmw'},
+        { id: 2, src: imagem1, marca: 'byd'},
+        { id: 3, src: imagem2, marca: 'chevrolet'},
+        { id: 4, src: imagem3,  marca: 'ford'},
+        { id: 5, src: imagem4,  marca: 'honda'},
+        { id: 6, src: imagem5,  marca: 'toyota'},
+        { id: 7, src: imagem6,  marca: 'volkswagem'},
+        { id: 8, src: imagem7,  marca: 'fiat'},
+        { id: 9, src: imagem8,  marca: 'nissan'},
+        { id: 10, src: imagem9,  marca: 'ram'},
+        { id: 11, src: imagem10,  marca: 'mercedes'},
+        { id: 12, src: imagem11,  marca: 'hyundai'},
     ]
 
     const imagemBanner = [
@@ -212,20 +169,13 @@ const Home = () => {
         }
     }, [sellCar])
 
-    const [search, setSearch] = useState('')
     const navigate = useNavigate()
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        console.log(search)
-        if (!search) {
-            return
-        }
-        localStorage.setItem('search', search)
-        navigate('/search')
-        setTimeout(() => {
-            window.location.reload()
-        }, 500)
+    const redirecionar = (valor:string) =>{
+        navigate('/marcas')
+        console.log(valor)
+        localStorage.setItem('marca', valor)
+
     }
 
     return (
@@ -242,33 +192,9 @@ const Home = () => {
                     <img key={imagem.id} src={imagem.src} height='100%' width='100%' style={{ marginTop: 30 }} />
                 ))}
             </Carousel>
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 5 }}>
-                <Card sx={{ position: 'absolute', width: '62%' }}>
-                    <CardContent>
-                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <Typography variant="h3" color="#696969">As melhores ofertas voce encontra aqui!</Typography>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 2 }}>
-                            <form onSubmit={handleSubmit} style={{ width: 560 }}>
-                                <Search sx={{ border: '1px solid', borderRadius: '4px', height: 38 }}>
-                                    <SearchIconWrapper>
-                                        <SearchIcon />
-                                    </SearchIconWrapper>
-                                    <StyledInputBase
-                                        placeholder='Procurar'
-                                        onChange={(e) => setSearch(e.target.value)}
-                                        value={search}
-                                    />
-                                </Search>
-                            </form>
-                            <Button sx={{ marginLeft: 1, backgroundColor: '#3b06b6', color: '#fff', fontWeight: 700, width: 300, height: 40 }} onClick={() => navigate('/comprar')}>Ver ofertas</Button>
-                        </Box>
-                    </CardContent>
-                </Card>
-            </Box>
             <Container >
                 <AppBarComponent />
-                    <Box sx={{ mt: 20 }}>
+                    <Box sx={{ mt: 5 }}>
                         <Typography variant="h5" color="#696969" sx={{ mb: 5 }}>Marcas</Typography>
                         <Carousel
                             arrows={false}
@@ -280,7 +206,7 @@ const Home = () => {
                             dotListClass="custom-dot-list-style"
                             itemClass="carousel-item-padding-40-px">
                             {imagemLogo.map((imagem) => (
-                                <Avatar key={imagem.id} src={imagem.src} onClick={() => navigate('/marcas')} sx={{ width: 150, height: 150, gap: 2, border: '1px solid', cursor: 'pointer' }}></Avatar>
+                                <Avatar key={imagem.id} src={imagem.src}  onClick={() => redirecionar(imagem.marca)} sx={{ width: 150, height: 150, gap: 2, border: '1px solid', cursor: 'pointer' }}></Avatar>
                             ))}
                         </Carousel>
                     </Box>
