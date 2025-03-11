@@ -56,11 +56,11 @@ const Home = () => {
     ]
 
     const imagemCategoria = [
-        { id: 1, src: categ, titulo: 'Sedan' },
-        { id: 2, src: categ1, titulo: 'Eletrico' },
-        { id: 3, src: categ2, titulo: 'Picape' },
-        { id: 4, src: categ3, titulo: 'Suv' },
-        { id: 5, src: categ4, titulo: 'Hatch' }
+        { id: 1, src: categ, titulo: 'sedan' },
+        { id: 2, src: categ1, titulo: 'eletrico' },
+        { id: 3, src: categ2, titulo: 'picape' },
+        { id: 4, src: categ3, titulo: 'suv' },
+        { id: 5, src: categ4, titulo: 'hatch' }
     ]
 
     interface myCarObject {
@@ -171,11 +171,15 @@ const Home = () => {
 
     const navigate = useNavigate()
 
-    const redirecionar = (valor:string) =>{
+    const redirecionarMarcas = (valor:string) =>{
         navigate('/marcas')
         console.log(valor)
         localStorage.setItem('marca', valor)
-
+    }
+    const redirecionarCategorias = (valor:string) =>{
+        navigate('/categorias')
+        console.log(valor)
+        localStorage.setItem('categoria', valor)
     }
 
     return (
@@ -206,7 +210,7 @@ const Home = () => {
                             dotListClass="custom-dot-list-style"
                             itemClass="carousel-item-padding-40-px">
                             {imagemLogo.map((imagem) => (
-                                <Avatar key={imagem.id} src={imagem.src}  onClick={() => redirecionar(imagem.marca)} sx={{ width: 150, height: 150, gap: 2, border: '1px solid', cursor: 'pointer' }}></Avatar>
+                                <Avatar key={imagem.id} src={imagem.src}  onClick={() => redirecionarMarcas(imagem.marca)} sx={{ width: 150, height: 150, gap: 2, border: '1px solid', cursor: 'pointer' }}></Avatar>
                             ))}
                         </Carousel>
                     </Box>
@@ -221,7 +225,7 @@ const Home = () => {
                             dotListClass="custom-dot-list-style">
                             {imagemCategoria.map((imagem) => (
                                 <Box key={imagem.id} position="relative" width="100%" sx={{ height: 200, mt: 5 }}>
-                                    <img key={imagem.id} src={imagem.src} width="95%" height='100%' style={{ borderRadius: 5, cursor: 'pointer' }} onClick={() => navigate('/categorias')} />
+                                    <img key={imagem.id} src={imagem.src} width="95%" height='100%' style={{ borderRadius: 5, cursor: 'pointer' }} onClick={() => redirecionarCategorias(imagem.titulo)} />
                                     <Typography
                                         variant="h4"
                                         sx={{

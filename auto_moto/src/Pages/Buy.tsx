@@ -45,7 +45,7 @@ const Buy = () => {
 
 
     return(
-        <Grid2 sx={{backgroundColor: '#ECEDF2', height: '100vh', mt: -2}}>
+        <Grid2 sx={{backgroundColor: '#ECEDF2', height: '100%', mt: -2}}>
          <AppBar position="fixed"
                 sx={{
                     color: "#1a1a1a",
