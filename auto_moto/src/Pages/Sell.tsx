@@ -11,9 +11,14 @@ const Sell = () => {
 
     const navigate = useNavigate()
     const [marca, setMarca] = useState('');
+    const [tipo, setTipo] = useState('')
 
     const handleChange = (event: SelectChangeEvent) => {
         setMarca(event.target.value as string);
+    };
+
+    const handleChangeCategory = (event: SelectChangeEvent) => {
+        setTipo(event.target.value as string);
     };
 
     const todasMarcas = [
@@ -31,8 +36,16 @@ const Sell = () => {
         { id: 12, marca: 'hyundai' },
     ]
 
+    const tipoCarro = [
+        { id: 1, tipo: 'sedan'},
+        { id: 2, tipo: 'hatch'},
+        { id: 3, tipo: 'eletrico'},
+        { id: 4, tipo: 'picape'},
+        { id: 5, tipo: 'suv'},
+    ]
+
     return (
-        <Grid2 sx={{ backgroundColor: '#ECEDF2', height: '100vh', mt: -2 }}>
+        <Grid2 sx={{ backgroundColor: '#ECEDF2', height: '100%', mt: -2 }}>
             <AppBar position="fixed"
                 sx={{
                     color: "#1a1a1a",
@@ -51,10 +64,10 @@ const Sell = () => {
             <Container>
                 <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
                     <ButtonMenu />
-                    <Box>
-                        <Card>
+                    <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                        <Card sx={{ width: '50%'}}>
                             <img src={teste} />
-                            <CardContent>
+                            <CardContent sx={{ display: 'flex', flexDirection: 'column'}}>
                                 <TextField label="nome"></TextField>
                                 <FormControl fullWidth>
                                     <InputLabel id="demo-simple-select-label">Marca</InputLabel>
@@ -74,12 +87,28 @@ const Sell = () => {
                                 <TextField label="ano"></TextField>
                                 <TextField label="motor"></TextField>
                                 <TextField label="modelo"></TextField>
-                                <Select label='tipo'></Select>
+                               
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">tipo</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={tipo}
+                                        onChange={handleChangeCategory}
+                                    >
+                                        {tipoCarro.map((item) => (
+                                            <MenuItem key={item.id} value={item.tipo}>
+                                                {item.tipo}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
                                 <TextField label="cor"></TextField>
                                 <TextField label="cambio"></TextField>
                                 <TextField label="combustivel"></TextField>
                                 <TextField label="quilometragem"></TextField>
                                 <TextField label="preço"></TextField>
+                                <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff"}} >Publicar</Button>
                             </CardContent>
                         </Card>
                     </Box>
