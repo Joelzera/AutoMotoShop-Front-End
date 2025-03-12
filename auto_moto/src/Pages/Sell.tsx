@@ -1,25 +1,41 @@
-import { AppBar, Box, Button, Card, CardContent, Container, FormControl, Grid2, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Button, Card, CardContent, Container, FormControl, Grid2, InputLabel, MenuItem, Select,  TextField, Toolbar, Typography } from "@mui/material"
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import ButtonMenu from "../components/ButtonMenu";
 import { useNavigate } from "react-router-dom";
 import teste from '../../img/melhor-capa-para-carro.jpg'
 import { useState } from "react";
+import axios from "axios";
 
 
 
 const Sell = () => {
 
     const navigate = useNavigate()
-    const [marca, setMarca] = useState('');
-    const [tipo, setTipo] = useState('')
+    const [car, setCar] = useState({
+        nome: "",
+        marca: "",
+        ano: "",
+        motor: "",
+        modelo: "",
+        tipo: "",
+        cor: "",
+        cambio: "",
+        combustivel: "",
+        quilometragem: "",
+        preço: ""
+    })
 
-    const handleChange = (event: SelectChangeEvent) => {
-        setMarca(event.target.value as string);
+    const handleChange = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        try {
+            const response = await axios.post(`http://localhost:5000/car`, car)
+            console.log(response.data)
+        } catch (error) {
+            console.log(error, 'erro ao registrar o carro')
+        }
     };
 
-    const handleChangeCategory = (event: SelectChangeEvent) => {
-        setTipo(event.target.value as string);
-    };
+
 
     const todasMarcas = [
         { id: 1, marca: 'bmw' },
@@ -37,11 +53,11 @@ const Sell = () => {
     ]
 
     const tipoCarro = [
-        { id: 1, tipo: 'sedan'},
-        { id: 2, tipo: 'hatch'},
-        { id: 3, tipo: 'eletrico'},
-        { id: 4, tipo: 'picape'},
-        { id: 5, tipo: 'suv'},
+        { id: 1, tipo: 'sedan' },
+        { id: 2, tipo: 'hatch' },
+        { id: 3, tipo: 'eletrico' },
+        { id: 4, tipo: 'picape' },
+        { id: 5, tipo: 'suv' },
     ]
 
     return (
@@ -64,51 +80,53 @@ const Sell = () => {
             <Container>
                 <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
                     <ButtonMenu />
-                    <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                        <Card sx={{ width: '50%'}}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Card sx={{ width: '50%' }}>
                             <img src={teste} />
-                            <CardContent sx={{ display: 'flex', flexDirection: 'column'}}>
-                                <TextField label="nome"></TextField>
-                                <FormControl fullWidth>
-                                    <InputLabel id="demo-simple-select-label">Marca</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        value={marca}
-                                        onChange={handleChange}
-                                    >
-                                        {todasMarcas.map((item) => (
-                                            <MenuItem key={item.id} value={item.marca}>
-                                                {item.marca}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                                <TextField label="ano"></TextField>
-                                <TextField label="motor"></TextField>
-                                <TextField label="modelo"></TextField>
-                               
-                                <FormControl fullWidth>
-                                    <InputLabel id="demo-simple-select-label">tipo</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        value={tipo}
-                                        onChange={handleChangeCategory}
-                                    >
-                                        {tipoCarro.map((item) => (
-                                            <MenuItem key={item.id} value={item.tipo}>
-                                                {item.tipo}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                                <TextField label="cor"></TextField>
-                                <TextField label="cambio"></TextField>
-                                <TextField label="combustivel"></TextField>
-                                <TextField label="quilometragem"></TextField>
-                                <TextField label="preço"></TextField>
-                                <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff"}} >Publicar</Button>
+                            <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
+                                <form onSubmit={handleChange}>
+                                    <TextField label="nome" value={car.nome} onChange={(e) => setCar({...car, nome: e.target.value})}></TextField>
+                                    <FormControl fullWidth>
+                                        <InputLabel id="demo-simple-select-label">Marca</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={car.marca }
+                                            onChange={(e) => setCar({...car, marca: e.target.value})}
+                                        >
+                                            {todasMarcas.map((item) => (
+                                                <MenuItem key={item.id} value={item.marca}>
+                                                    {item.marca}
+                                                </MenuItem>
+                                            ))}
+                                        </Select>
+                                    </FormControl>
+                                    <TextField label="ano" value={car.ano} onChange={(e) => setCar({...car, ano: e.target.value})}></TextField>
+                                    <TextField label="motor" value={car.motor} onChange={(e) => setCar({...car, motor: e.target.value})}></TextField>
+                                    <TextField label="modelo" value={car.modelo} onChange={(e) => setCar({...car, modelo: e.target.value})}></TextField>
+
+                                    <FormControl fullWidth>
+                                        <InputLabel id="demo-simple-select-label">tipo</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={car.tipo }
+                                            onChange={(e) => setCar({...car, tipo: e.target.value})}
+                                        >
+                                            {tipoCarro.map((item) => (
+                                                <MenuItem key={item.id} value={item.tipo}>
+                                                    {item.tipo}
+                                                </MenuItem>
+                                            ))}
+                                        </Select>
+                                    </FormControl>
+                                    <TextField label="cor" value={car.cor} onChange={(e) => setCar({...car, cor: e.target.value})}></TextField>
+                                    <TextField label="cambio" value={car.cambio} onChange={(e) => setCar({...car, cambio: e.target.value})}></TextField>
+                                    <TextField label="combustivel" value={car.combustivel} onChange={(e) => setCar({...car, combustivel: e.target.value})}></TextField>
+                                    <TextField label="quilometragem" value={car.quilometragem} onChange={(e) => setCar({...car, quilometragem: e.target.value})}></TextField>
+                                    <TextField label="preço" value={car.preço} onChange={(e) => setCar({...car, preço: e.target.value})}></TextField>
+                                    <Button variant="contained" type="submit" sx={{ backgroundColor: '#3b06b6', color: "fff" }} >Publicar</Button>
+                                </form>
                             </CardContent>
                         </Card>
                     </Box>

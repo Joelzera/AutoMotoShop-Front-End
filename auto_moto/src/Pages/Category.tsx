@@ -14,7 +14,7 @@ const Category = () => {
                 id: string,
                 nome: string,
                 marca: string,
-                ano: number,
+                ano: string,
                 motor: string,
                 modelo: string,
                 tipo: string,
