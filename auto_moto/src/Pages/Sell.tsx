@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Card, CardContent, Container, FormControl, Grid2, InputLabel, MenuItem, Select,  TextField, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Button, Card, CardContent, Container, FormControl, Grid2,  MenuItem, Select,  TextField, Toolbar, Typography } from "@mui/material"
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import ButtonMenu from "../components/ButtonMenu";
 import { useNavigate } from "react-router-dom";
@@ -83,14 +83,13 @@ const Sell = () => {
                     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Card sx={{ width: '50%' }}>
                             <img src={teste} />
-                            <CardContent sx={{ display: 'flex', flexDirection: 'column' }}>
-                                <form onSubmit={handleChange}>
-                                    <TextField label="nome" value={car.nome} onChange={(e) => setCar({...car, nome: e.target.value})}></TextField>
+                            <CardContent>
+                                <form onSubmit={handleChange} style={{ display: 'flex', flexDirection: 'column'}}>
+                                    <Typography>Nome</Typography>
+                                    <TextField id="nome" value={car.nome}  onChange={(e) => setCar({...car, nome: e.target.value})}></TextField>
+                                    <Typography>Marca</Typography>
                                     <FormControl fullWidth>
-                                        <InputLabel id="demo-simple-select-label">Marca</InputLabel>
                                         <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
                                             value={car.marca }
                                             onChange={(e) => setCar({...car, marca: e.target.value})}
                                         >
@@ -101,15 +100,15 @@ const Sell = () => {
                                             ))}
                                         </Select>
                                     </FormControl>
-                                    <TextField label="ano" value={car.ano} onChange={(e) => setCar({...car, ano: e.target.value})}></TextField>
-                                    <TextField label="motor" value={car.motor} onChange={(e) => setCar({...car, motor: e.target.value})}></TextField>
-                                    <TextField label="modelo" value={car.modelo} onChange={(e) => setCar({...car, modelo: e.target.value})}></TextField>
-
-                                    <FormControl fullWidth>
-                                        <InputLabel id="demo-simple-select-label">tipo</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
+                                    <Typography>Ano</Typography>
+                                    <TextField id="ano"  value={car.ano} onChange={(e) => setCar({...car, ano: e.target.value})}></TextField>
+                                    <Typography>Motor</Typography>
+                                    <TextField id="motor"  value={car.motor} onChange={(e) => setCar({...car, motor: e.target.value})}></TextField>
+                                    <Typography>Modelo</Typography>
+                                    <TextField id="modelo" value={car.modelo} onChange={(e) => setCar({...car, modelo: e.target.value})}></TextField>
+                                    <Typography>Tipo</Typography>
+                                    <FormControl fullWidth>                                       
+                                        <Select                       
                                             value={car.tipo }
                                             onChange={(e) => setCar({...car, tipo: e.target.value})}
                                         >
@@ -120,12 +119,17 @@ const Sell = () => {
                                             ))}
                                         </Select>
                                     </FormControl>
-                                    <TextField label="cor" value={car.cor} onChange={(e) => setCar({...car, cor: e.target.value})}></TextField>
-                                    <TextField label="cambio" value={car.cambio} onChange={(e) => setCar({...car, cambio: e.target.value})}></TextField>
-                                    <TextField label="combustivel" value={car.combustivel} onChange={(e) => setCar({...car, combustivel: e.target.value})}></TextField>
-                                    <TextField label="quilometragem" value={car.quilometragem} onChange={(e) => setCar({...car, quilometragem: e.target.value})}></TextField>
-                                    <TextField label="preço" value={car.preço} onChange={(e) => setCar({...car, preço: e.target.value})}></TextField>
-                                    <Button variant="contained" type="submit" sx={{ backgroundColor: '#3b06b6', color: "fff" }} >Publicar</Button>
+                                    <Typography>cor</Typography>
+                                    <TextField id="cor"  value={car.cor} onChange={(e) => setCar({...car, cor: e.target.value})}></TextField>
+                                    <Typography>Cambio</Typography>
+                                    <TextField id="cambio"  value={car.cambio} onChange={(e) => setCar({...car, cambio: e.target.value})}></TextField>
+                                    <Typography>Combustivel</Typography>
+                                    <TextField id="combustivel"  value={car.combustivel} onChange={(e) => setCar({...car, combustivel: e.target.value})}></TextField>
+                                    <Typography>Km</Typography>
+                                    <TextField id="quilometragem"  value={car.quilometragem} onChange={(e) => setCar({...car, quilometragem: e.target.value})}></TextField>
+                                    <Typography>Preço</Typography>
+                                    <TextField id="preço"  value={car.preço} onChange={(e) => setCar({...car, preço: e.target.value})}></TextField>
+                                    <Button variant="contained" style={{ marginTop: 10}} type="submit" sx={{ backgroundColor: '#3b06b6', color: "fff" }} >Publicar</Button>
                                 </form>
                             </CardContent>
                         </Card>
