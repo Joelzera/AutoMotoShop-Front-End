@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom"
 
 const Brands = () => {
 
-
+ //alterção
     interface myCarObject {
             id: string,
             nome: string,
