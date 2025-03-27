@@ -31,9 +31,22 @@ const Search = () =>{
         
         const getCarName = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/car/${searchCarlower}`)
-                console.log(response.data)
-                setCars(response.data)
+                if(searchCarlower){
+                    const response = await axios.get(`http://localhost:5000/car/${searchCarlower}`)
+                    if(response){
+                        console.log(response.data)
+                        setCars(response.data)
+                    }
+                    else{
+                        const responseMarca = await axios.get(`http://localhost:5000/car/marca/${searchCarlower}`)
+                        if(responseMarca){
+                            console.log(responseMarca.data)
+                            setCars(responseMarca.data)
+                        }
+                    }
+                }
+                
+                
             } catch (error) {
                 console.log(error, ' deu erro')
             }
