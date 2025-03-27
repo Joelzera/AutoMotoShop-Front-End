@@ -2,7 +2,7 @@ import { Box, Button, Card, CardContent, CardMedia, Container, Grid2, Typography
 import AppBarComponent from "../components/AppBarComponent"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import teste from '../../img/melhor-capa-para-carro.jpg'
+import teste from '../../img/TesteCapa.jpg'
 import ButtonMenu from "../components/ButtonMenu"
 
 const Search = () =>{
