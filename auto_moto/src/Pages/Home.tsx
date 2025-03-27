@@ -5,27 +5,26 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"
-import imagem from '../../img/logo bmw.webp'
-import imagem1 from '../../img/bydlogo.jpg'
-import imagem2 from '../../img/chevy-logo-2011.png'
-import imagem3 from '../../img/logo ford2.jpg'
-import imagem4 from '../../img/logo honda.jpg'
-import imagem5 from '../../img/logo toyota.webp'
-import imagem6 from '../../img/logo volks.jpg'
-import imagem7 from '../../img/fiat-automobiles2240.logowik.com.webp'
-import imagem8 from '../../img/logo nissan.jpg'
-import imagem9 from '../../img/Logotipo-da-Ram-2.jpg'
-import imagem10 from '../../img/mercedes-logo-vetora-136350849.webp'
-import imagem11 from '../../img/logohyundai.jpg'
-import banner from '../../img/banner11.webp'
-import banner1 from '../../img/modelBanner-1.webp'
-import banner2 from '../../img/BannerPicape.webp'
-import categ from '../../img/benzSedan.webp'
-import categ1 from '../../img/eletrico.jpg'
-import categ2 from '../../img/picape.jpg'
-import categ3 from '../../img/suv.jpg'
-import categ4 from '../../img/hatch.webp'
-import teste from '../../img/melhor-capa-para-carro.jpg'
+import imagem from '../../img/logoBmw.jpg'
+import imagem1 from '../../img/logoByd.jpg'
+import imagem2 from '../../img/logoChev.png'
+import imagem3 from '../../img/logoFord.webp'
+import imagem4 from '../../img/logoHonda.jpg'
+import imagem5 from '../../img/logoToyota.png'
+import imagem6 from '../../img/logoVolks.webp'
+import imagem7 from '../../img/logoFiat.jpg'
+import imagem8 from '../../img/logoNissan.jpg'
+import imagem9 from '../../img/logoRam.jpg'
+import imagem10 from '../../img/logoMercedes.webp'
+import imagem11 from '../../img/logoHyundai.webp'
+import banner1 from '../../img/bannerCivic.webp'
+import banner2 from '../../img/bannerCorolla.png'
+import categ from '../../img/CategSedan.webp'
+import categ1 from '../../img/CategEletrico.webp'
+import categ2 from '../../img/CategPicape.webp'
+import categ3 from '../../img/CategSuv.jpg'
+import categ4 from '../../img/CategHatch.webp'
+import teste from '../../img/TesteCapa.jpg'
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AppBarComponent from "../components/AppBarComponent";
@@ -50,8 +49,8 @@ const Home = () => {
     ]
 
     const imagemBanner = [
-        { id: 1, src: banner },
-        { id: 2, src: banner1 },
+        
+        { id: 1, src: banner1 },
         { id: 2, src: banner2 }
     ]
 

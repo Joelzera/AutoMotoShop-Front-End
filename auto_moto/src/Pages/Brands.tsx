@@ -2,7 +2,7 @@ import { AppBar, Box, Button, Card, CardContent, CardMedia, Container, Grid2, To
 import ButtonMenu from "../components/ButtonMenu"
 import axios from "axios"
 import { useState } from "react"
-import teste from '../../img/melhor-capa-para-carro.jpg'
+import teste from '../../img/TesteCapa.jpg'
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import { useNavigate } from "react-router-dom"
 

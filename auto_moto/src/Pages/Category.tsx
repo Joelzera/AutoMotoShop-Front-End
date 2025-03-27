@@ -4,7 +4,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
-import teste from '../../img/melhor-capa-para-carro.jpg'
+import teste from '../../img/TesteCapa.jpg'
 
 const Category = () => {
 
