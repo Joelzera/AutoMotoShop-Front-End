@@ -6,10 +6,10 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css"
 import imagem from '../../img/logoBmw.jpg'
-import imagem1 from '../../img/logoByd.jpg'
+import imagem1 from '../../img/logoByd2.jpg'
 import imagem2 from '../../img/logoChev.png'
 import imagem3 from '../../img/logoFord.webp'
-import imagem4 from '../../img/logoHonda.jpg'
+import imagem4 from '../../img/logoHonda1.jpg'
 import imagem5 from '../../img/logoToyota.png'
 import imagem6 from '../../img/logoVolks.webp'
 import imagem7 from '../../img/logoFiat.jpg'

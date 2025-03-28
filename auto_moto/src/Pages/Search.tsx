@@ -5,7 +5,7 @@ import axios from "axios"
 import teste from '../../img/TesteCapa.jpg'
 import ButtonMenu from "../components/ButtonMenu"
 
-const Search = () =>{
+const Search = () => {
 
     interface myCarObject {
         id: string,
@@ -22,67 +22,65 @@ const Search = () =>{
         preço: string,
         ativo: boolean
     }
-    const [cars , setCars] = useState<myCarObject[]>([])
-    
+    const [cars, setCars] = useState<myCarObject[]>([])
+
     const searchCar = localStorage.getItem('search')
-    const searchCarlower = searchCar?.toLowerCase()
+    const searchCarlower = searchCar?.toLowerCase().split(' ')[0]
 
-    useEffect(() =>{
-        
+    useEffect(() => {
         const getCarName = async () => {
-            try {
-                if(searchCarlower){
-                    const response = await axios.get(`http://localhost:5000/car/${searchCarlower}`)
-                    if(response){
-                        console.log(response.data)
-                        setCars(response.data)
-                    }
-                    else{
-                        const responseMarca = await axios.get(`http://localhost:5000/car/marca/${searchCarlower}`)
-                        if(responseMarca){
-                            console.log(responseMarca.data)
-                            setCars(responseMarca.data)
-                        }
-                    }
+          try {
+            if (searchCarlower) {
+              const response = await axios.get(`http://localhost:5000/car/${searchCarlower}`);         
+              if (response.data && response.data.length > 0) {
+                console.log('Carros encontrados:', response.data);
+                setCars(response.data);
+              } else {
+                const responseMarca = await axios.get(`http://localhost:5000/car/marca/${searchCarlower}`);
+                if (responseMarca.data && responseMarca.data.length > 0) {
+                  console.log('Carros pela marca encontrados:', responseMarca.data);
+                  setCars(responseMarca.data);
+                } else {
+                  console.log('Nenhum carro encontrado com esse nome ou marca');
                 }
-                
-                
-            } catch (error) {
-                console.log(error, ' deu erro')
+              }
             }
-        }
-        getCarName()
-    },[])
+          } catch (error) {
+            console.log('Erro ao buscar carro:', error);
+          }
+        };   
+        getCarName();
+      }, [searchCarlower]);
 
-    
-    
-    return(
+
+
+    return (
         <>
-        <AppBarComponent/>
-        <Container>
-        <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>          
-            <ButtonMenu/>
-            <Box sx={{ mt: 5, display: 'flex', flexWrap: 'wrap', gap: 2}}>               
-                {cars.map((car) =>(
-                    <Card key={car.id} sx={{ maxWidth: 270, width: '100%', border: '1px solid', mt: 2 }}>
-                         <CardMedia sx={{ height: 140 }} image={teste} />
-                    <CardContent>
-                        <Typography variant="h4" sx={{ fontWeight: 'bold' }}>{car.nome}</Typography>
-                        <Box sx={{ display: 'flex', gap: 1 }}>
-                            <Typography variant="h6" color="#696969">{car.motor}</Typography>
-                            <Typography variant="h6" color="#696969">{car.modelo}</Typography>
-                            <Typography variant="h6" color="#696969">{car.combustivel}</Typography>
-                        </Box>
-                        <Typography variant="h6" sx={{ mt: 3, fontWeight: 'bold' }}>R$ {car.preço}</Typography>
-                        <Typography variant="h6" color="#696969">{car.ano}</Typography>
-                        <Typography variant="h6" color="#696969">{car.quilometragem} km</Typography>
-                        <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", width: '100%' }}>Detalhes</Button>
-                    </CardContent>
-                </Card>
-                ))}
-            </Box>
-        </Grid2>
-        </Container>
+            <AppBarComponent />
+            <Container>
+                <Grid2 size={{ xs: 12, md: 12, lg: 12 }}>
+                    <ButtonMenu />
+                    <Box sx={{ mt: 5, display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                        {cars.map((car) => (
+                            <Card key={car.id} sx={{ maxWidth: 270, width: '100%', border: '1px solid', mt: 2 }}>
+                                <CardMedia sx={{ height: 140 }} image={teste} />
+                                <CardContent>
+                                    <Typography variant="h4" sx={{ fontWeight: 'bold' }}>{car.nome}</Typography>
+                                    <Box sx={{ display: 'flex', gap: 1 }}>
+                                        <Typography variant="h6" color="#696969">{car.motor}</Typography>
+                                        <Typography variant="h6" color="#696969">{car.modelo}</Typography>
+                                        <Typography variant="h6" color="#696969">{car.combustivel}</Typography>
+                                    </Box>
+                                    <Typography variant="h6" sx={{ mt: 3, fontWeight: 'bold' }}>R$ {car.preço}</Typography>
+                                    <Typography variant="h6" color="#696969">{car.ano}</Typography>
+                                    <Typography variant="h6" color="#696969">{car.quilometragem} km</Typography>
+                                    <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", width: '100%' }}>Detalhes</Button>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </Box>
+                </Grid2>
+            </Container>
         </>
     )
 }
