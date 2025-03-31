@@ -1,4 +1,4 @@
-import {  Avatar, Box, Button, Card, CardContent, CardMedia, Container, Grid2, Typography } from "@mui/material"
+import { Avatar, Box, Button, Card, CardContent, CardMedia, Container, Grid2, Typography } from "@mui/material"
 import SportsMotorsportsIcon from '@mui/icons-material/SportsMotorsports';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -34,22 +34,22 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
 
     const imagemLogo = [
-        { id: 1, src: imagem, marca: 'bmw'},
-        { id: 2, src: imagem1, marca: 'byd'},
-        { id: 3, src: imagem2, marca: 'chevrolet'},
-        { id: 4, src: imagem3,  marca: 'ford'},
-        { id: 5, src: imagem4,  marca: 'honda'},
-        { id: 6, src: imagem5,  marca: 'toyota'},
-        { id: 7, src: imagem6,  marca: 'volkswagem'},
-        { id: 8, src: imagem7,  marca: 'fiat'},
-        { id: 9, src: imagem8,  marca: 'nissan'},
-        { id: 10, src: imagem9,  marca: 'ram'},
-        { id: 11, src: imagem10,  marca: 'mercedes'},
-        { id: 12, src: imagem11,  marca: 'hyundai'},
+        { id: 1, src: imagem, marca: 'bmw' },
+        { id: 2, src: imagem1, marca: 'byd' },
+        { id: 3, src: imagem2, marca: 'chevrolet' },
+        { id: 4, src: imagem3, marca: 'ford' },
+        { id: 5, src: imagem4, marca: 'honda' },
+        { id: 6, src: imagem5, marca: 'toyota' },
+        { id: 7, src: imagem6, marca: 'volkswagem' },
+        { id: 8, src: imagem7, marca: 'fiat' },
+        { id: 9, src: imagem8, marca: 'nissan' },
+        { id: 10, src: imagem9, marca: 'ram' },
+        { id: 11, src: imagem10, marca: 'mercedes' },
+        { id: 12, src: imagem11, marca: 'hyundai' },
     ]
 
     const imagemBanner = [
-        
+
         { id: 1, src: banner1 },
         { id: 2, src: banner2 }
     ]
@@ -170,19 +170,25 @@ const Home = () => {
 
     const navigate = useNavigate()
 
-    const redirecionarMarcas = (valor:string) =>{
+    const redirecionarMarcas = (valor: string) => {
         navigate('/marcas')
         console.log(valor)
         localStorage.setItem('marca', valor)
     }
-    const redirecionarCategorias = (valor:string) =>{
+    const redirecionarCategorias = (valor: string) => {
         navigate('/categorias')
         console.log(valor)
         localStorage.setItem('categoria', valor)
     }
 
+    const redirecionarDetalhes = (valor: string) => {
+        navigate('/detalhes')
+        console.log(valor)
+        localStorage.setItem('detalhes', valor)
+    }
+
     return (
-        <Grid2 sx={{backgroundColor: '#ECEDF2'}}>
+        <Grid2 sx={{ backgroundColor: '#ECEDF2' }}>
             <Carousel
                 responsive={responsivoBanner}
                 infinite={true}
@@ -197,75 +203,75 @@ const Home = () => {
             </Carousel>
             <Container >
                 <AppBarComponent />
-                    <Box sx={{ mt: 5 }}>
-                        <Typography variant="h5" color="#696969" sx={{ mb: 5 }}>Marcas</Typography>
-                        <Carousel
-                            arrows={false}
-                            responsive={responsivo}
-                            infinite={true}
-                            autoPlay={true}
-                            autoPlaySpeed={3000}
-                            keyBoardControl={true}
-                            dotListClass="custom-dot-list-style"
-                            itemClass="carousel-item-padding-40-px">
-                            {imagemLogo.map((imagem) => (
-                                <Avatar key={imagem.id} src={imagem.src}  onClick={() => redirecionarMarcas(imagem.marca)} sx={{ width: 150, height: 150, gap: 2, border: '1px solid', cursor: 'pointer' }}></Avatar>
-                            ))}
-                        </Carousel>
-                    </Box>
-                    <Box sx={{ mt: 5 }}>
-                        <Typography variant="h5" color="#696969">Categorias</Typography>
-                        <Carousel
-                            responsive={responsivoBanner1}
-                            infinite={true}
-                            autoPlay={false}
-                            autoPlaySpeed={3000}
-                            keyBoardControl={true}
-                            dotListClass="custom-dot-list-style">
-                            {imagemCategoria.map((imagem) => (
-                                <Box key={imagem.id} position="relative" width="100%" sx={{ height: 200, mt: 5 }}>
-                                    <img key={imagem.id} src={imagem.src} width="95%" height='100%' style={{ borderRadius: 5, cursor: 'pointer' }} onClick={() => redirecionarCategorias(imagem.titulo)} />
-                                    <Typography
-                                        variant="h4"
-                                        sx={{
-                                            position: "absolute",
-                                            top: "5%",
-                                            left: "50%",
-                                            transform: "translateX(-50%)",
-                                            fontWeight: 600,
-                                            border: '1px solid',
-                                            color: "white",
-                                            padding: "8px 12px",
-                                            borderRadius: "4px",
-                                            textAlign: "center",
-                                        }}
-                                    >
-                                        {imagem.titulo}
-                                    </Typography>
-                                </Box>
-                            ))}
-                        </Carousel>
-                    </Box>
-                    <Typography variant="h5" sx={{ mt: 10 }} color="#696969">Carros a venda</Typography>
-                    <Box sx={{ display: 'flex', gap: 1, mt: 2, flexWrap: 'wrap' }}>
-                        {sellCar.map((car) => (
-                            <Card key={car.id} sx={{ maxWidth: 280, width: '100%', border: '1px solid', mt: 2 }}>
-                                <CardMedia sx={{ height: 140 }} image={teste} />
-                                <CardContent>
-                                    <Typography variant="h4" sx={{ fontWeight: 'bold' }}>{car.nome}</Typography>
-                                    <Box sx={{ display: 'flex', gap: 1 }}>
-                                        <Typography variant="h6" color="#696969">{car.motor}</Typography>
-                                        <Typography variant="h6" color="#696969">{car.modelo}</Typography>
-                                        <Typography variant="h6" color="#696969">{car.combustivel}</Typography>
-                                    </Box>
-                                    <Typography variant="h6" sx={{ mt: 3, fontWeight: 'bold' }}>R$ {car.preço}</Typography>
-                                    <Typography variant="h6" color="#696969">{car.ano}</Typography>
-                                    <Typography variant="h6" color="#696969">{car.quilometragem} km</Typography>
-                                    <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", width: '100%' }}>Detalhes</Button>
-                                </CardContent>
-                            </Card>
+                <Box sx={{ mt: 5 }}>
+                    <Typography variant="h5" color="#696969" sx={{ mb: 5 }}>Marcas</Typography>
+                    <Carousel
+                        arrows={false}
+                        responsive={responsivo}
+                        infinite={true}
+                        autoPlay={true}
+                        autoPlaySpeed={3000}
+                        keyBoardControl={true}
+                        dotListClass="custom-dot-list-style"
+                        itemClass="carousel-item-padding-40-px">
+                        {imagemLogo.map((imagem) => (
+                            <Avatar key={imagem.id} src={imagem.src} onClick={() => redirecionarMarcas(imagem.marca)} sx={{ width: 150, height: 150, gap: 2, border: '1px solid', cursor: 'pointer' }}></Avatar>
                         ))}
-                    </Box>
+                    </Carousel>
+                </Box>
+                <Box sx={{ mt: 5 }}>
+                    <Typography variant="h5" color="#696969">Categorias</Typography>
+                    <Carousel
+                        responsive={responsivoBanner1}
+                        infinite={true}
+                        autoPlay={false}
+                        autoPlaySpeed={3000}
+                        keyBoardControl={true}
+                        dotListClass="custom-dot-list-style">
+                        {imagemCategoria.map((imagem) => (
+                            <Box key={imagem.id} position="relative" width="100%" sx={{ height: 200, mt: 5 }}>
+                                <img key={imagem.id} src={imagem.src} width="95%" height='100%' style={{ borderRadius: 5, cursor: 'pointer' }} onClick={() => redirecionarCategorias(imagem.titulo)} />
+                                <Typography
+                                    variant="h4"
+                                    sx={{
+                                        position: "absolute",
+                                        top: "5%",
+                                        left: "50%",
+                                        transform: "translateX(-50%)",
+                                        fontWeight: 600,
+                                        border: '1px solid',
+                                        color: "white",
+                                        padding: "8px 12px",
+                                        borderRadius: "4px",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    {imagem.titulo}
+                                </Typography>
+                            </Box>
+                        ))}
+                    </Carousel>
+                </Box>
+                <Typography variant="h5" sx={{ mt: 10 }} color="#696969">Carros a venda</Typography>
+                <Box sx={{ display: 'flex', gap: 1, mt: 2, flexWrap: 'wrap' }}>
+                    {sellCar.map((car) => (
+                        <Card key={car.id} sx={{ maxWidth: 280, width: '100%', border: '1px solid', mt: 2 }}>
+                            <CardMedia sx={{ height: 140 }} image={teste} />
+                            <CardContent>
+                                <Typography variant="h4" sx={{ fontWeight: 'bold' }}>{car.nome}</Typography>
+                                <Box sx={{ display: 'flex', gap: 1 }}>
+                                    <Typography variant="h6" color="#696969">{car.motor}</Typography>
+                                    <Typography variant="h6" color="#696969">{car.modelo}</Typography>
+                                    <Typography variant="h6" color="#696969">{car.combustivel}</Typography>
+                                </Box>
+                                <Typography variant="h6" sx={{ mt: 3, fontWeight: 'bold' }}>R$ {car.preço}</Typography>
+                                <Typography variant="h6" color="#696969">{car.ano}</Typography>
+                                <Typography variant="h6" color="#696969">{car.quilometragem} km</Typography>
+                                <Button variant="contained" onClick={() => redirecionarDetalhes(car.nome)} sx={{ backgroundColor: '#3b06b6', color: "fff", width: '100%' }}>Detalhes</Button>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </Box>
             </Container>
             <Grid2 size={{ xs: 12, md: 12, lg: 12 }} sx={{ backgroundColor: '#3b06b6', height: 200, width: '100vw', mt: 2 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 5 }}>
