@@ -107,7 +107,7 @@ const Details = () => {
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px">
                 {imagemBanner.map((imagem) => (
-                    <img key={imagem.id} src={imagem.src} height='100%' width='100%' style={{ marginTop: 30 }} />
+                    <img key={imagem.id} src={imagem.src} height='100%' width='99%' />
                 ))}
             </Carousel>
             <Container>
@@ -135,7 +135,7 @@ const Details = () => {
                                     </Grid2>
                                     <Grid2 size={{ xs: 4, sm: 4 }}>
                                         <Typography variant="h6" mt={5} color="#696969">Km</Typography>
-                                        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>{car.quilometragem} km</Typography>
+                                        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>{car.quilometragem}</Typography>
                                     </Grid2 >
                                     <Grid2 size={{ xs: 4, sm: 4 }}>
                                         <Typography variant="h6" mt={5} color="#696969">Cambio</Typography>

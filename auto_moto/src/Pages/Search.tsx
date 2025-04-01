@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import teste from '../../img/TesteCapa.jpg'
 import ButtonMenu from "../components/ButtonMenu"
+import { useNavigate } from "react-router-dom"
 
 const Search = () => {
 
@@ -51,6 +52,13 @@ const Search = () => {
         };   
         getCarName();
       }, [searchCarlower]);
+      const navigate = useNavigate()
+
+      const redirecionarDetalhes = (valor: string) => {
+        navigate('/detalhes')
+        console.log(valor)
+        localStorage.setItem('detalhes', valor)
+    }
 
 
 
@@ -74,7 +82,7 @@ const Search = () => {
                                     <Typography variant="h6" sx={{ mt: 3, fontWeight: 'bold' }}>R$ {car.preço}</Typography>
                                     <Typography variant="h6" color="#696969">{car.ano}</Typography>
                                     <Typography variant="h6" color="#696969">{car.quilometragem} km</Typography>
-                                    <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", width: '100%' }}>Detalhes</Button>
+                                    <Button variant="contained" onClick={() => redirecionarDetalhes(car.nome)} sx={{ backgroundColor: '#3b06b6', color: "fff", width: '100%' }}>Detalhes</Button>
                                 </CardContent>
                             </Card>
                         ))}
