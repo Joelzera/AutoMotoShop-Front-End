@@ -42,6 +42,12 @@ const Category = () => {
     
         buscarCategoria()
 
+        const redirecionarDetalhes = (valor: string) => {
+            navigate('/detalhes')
+            console.log(valor)
+            localStorage.setItem('detalhes', valor)
+        }
+
     return(
                <Grid2 sx={{backgroundColor: '#ECEDF2', height: '100vh', mt: -2}}>
                         <AppBar position="fixed"
@@ -76,7 +82,7 @@ const Category = () => {
                                                    <Typography variant="h6" sx={{ mt: 3, fontWeight: 'bold' }}>R$ {car.preço}</Typography>
                                                    <Typography variant="h6" color="#696969">{car.ano}</Typography>
                                                    <Typography variant="h6" color="#696969">{car.quilometragem} km</Typography>
-                                                   <Button variant="contained" sx={{ backgroundColor: '#3b06b6', color: "fff", width: '100%' }}>Detalhes</Button>
+                                                   <Button variant="contained"  onClick={() => redirecionarDetalhes(car.nome)} sx={{ backgroundColor: '#3b06b6', color: "fff", width: '100%' }}>Detalhes</Button>
                                                </CardContent>
                                            </Card>
                                        ))}

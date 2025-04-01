@@ -186,6 +186,7 @@ const Home = () => {
         console.log(valor)
         localStorage.setItem('detalhes', valor)
     }
+    
 
     return (
         <Grid2 sx={{ backgroundColor: '#ECEDF2' }}>
