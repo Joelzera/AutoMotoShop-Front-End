@@ -84,7 +84,7 @@ const AppBarComponent = () => {
                 </Typography>
                 <Box flexGrow={0.5}>
                 <Button variant="text" size="small" color="inherit" sx={{ padding: 1}} onClick={() => navigate('/comprar')}>Comprar</Button>
-                <Button variant="text" size="small" color="inherit" sx={{ padding: 1}} onClick={() => navigate('/vender')}>Vender</Button>
+                <Button variant="text" size="small" color="inherit" sx={{ padding: 1}} onClick={() => navigate('/tipo')}>Vender</Button>
                 </Box>
                 <form onSubmit={handleSubmit} style={{ width: 275, marginRight: 5}}>
                                 <Search sx={{ border: '1px solid', borderRadius: '4px', height: 30 }}>
