@@ -36,7 +36,15 @@ const SellType = () => {
             <Container>
                 <Grid2 container sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
                     <Box sx={{  mt: 30 }}>
-                        <ListItemButton sx={{ backgroundColor: '#fff', border: '1px solid', borderRadius: 2, height: 100,  width: 300, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                        <ListItemButton onClick={() => navigate('/foto')}
+                                        sx={{ backgroundColor: '#fff', 
+                                              border: '1px solid', 
+                                              borderRadius: 2, 
+                                              height: 100,  
+                                              width: 300, 
+                                              display: 'flex', 
+                                              alignItems: 'center', 
+                                              justifyContent: 'center'}}>
                             <ListItemIcon>
                                 <DirectionsCarIcon sx={{ color: '#3b06b6'}}/>
                             </ListItemIcon>
