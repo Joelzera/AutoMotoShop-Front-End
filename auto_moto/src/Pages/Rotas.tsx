@@ -8,6 +8,7 @@ import Brands from './Brands';
 import Category from './Category';
 import Register from './Register';
 import Details from './Details';
+import SellType from './SellType';
 
 
 const rotas = () => {
@@ -23,6 +24,7 @@ const rotas = () => {
                 <Route path='/marcas' element={<Brands />} />
                 <Route path='/categorias' element={<Category />} />
                 <Route path='/detalhes' element={<Details />} />
+                <Route path='/tipo' element={<SellType />} />
             </Routes>
         </Router>
 

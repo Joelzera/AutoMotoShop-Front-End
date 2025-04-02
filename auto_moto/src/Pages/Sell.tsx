@@ -57,26 +57,14 @@ const Sell = () => {
         { id: 5, tipo: 'suv' },
     ]
 
-    const VisuallyHiddenInput = styled('input')({
-        clip: 'rect(0 0 0 0)',
-        clipPath: 'inset(50%)',
-        height: 1,
-        overflow: 'hidden',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        whiteSpace: 'nowrap',
-        width: 1,
-    });
-
-
     return (
-        <Grid2 sx={{ backgroundColor: '#ECEDF2', height: '100%', mt: -2 }}>
+        <Grid2 sx={{ backgroundColor: '#ECEDF2', height: '100vh', mt: -2 }}>
             <AppBar position="fixed"
                 sx={{
                     color: "#1a1a1a",
                     backgroundColor: 'white',
                     boxShadow: 'none',
+                    border: '1px solid'
                 }}>
                 <Toolbar>
                     <SportsMotorsportsIcon sx={{ padding: 1, color: '#3b06b6' }} fontSize="large" />
@@ -94,23 +82,8 @@ const Sell = () => {
             </AppBar>
             <Container>
                 <Grid2 container justifyContent="center">
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', mt: 12 }}>
-                        <Card sx={{ width: '80%' }}>
-                            <CardMedia image={teste} sx={{ height: 500 }}/>
-                            <Button
-                                component="label"
-                                role={undefined}
-                                variant="outlined"
-                                tabIndex={-1}
-                                startIcon={<AddBoxIcon />}
-                            >
-                                Adicionar Fotos
-                                <VisuallyHiddenInput
-                                    type="file"
-                                    onChange={(event) => console.log(event.target.files)}
-                                    multiple
-                                />
-                            </Button>
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', mt: 20 }}>
+                        <Card sx={{ width: '80%', border: '1px solid' }}>
                             <CardContent>
                                 <form onSubmit={handleChange} style={{ display: 'flex', flexDirection: 'column' }}>
                                     <Grid2 container spacing={2}>
