@@ -26,14 +26,18 @@ const SellPhoto = () => {
 
     const handleChangePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
-        if (e.target.files != null) {
-            setPhoto([...photo, ...Array.from(e.target.files)]);
+        const files = e.target.files
+        if (files?.length != null) {
+            if(photo.length < 5){
+                setPhoto([...photo, ...Array.from(files)]);
+            }
+                 
         }
         console.log(photo)
     }
 
     return (
-        <Grid2 sx={{ backgroundColor: '#ECEDF2', height: '100vh' }}>
+        <Grid2 container sx={{ backgroundColor: '#ECEDF2', height: '100vh' }}>
             <AppBar position="fixed"
                 sx={{
                     color: "#1a1a1a",
@@ -56,13 +60,15 @@ const SellPhoto = () => {
                 </Toolbar>
             </AppBar>
             <Container>
-                <Grid2 container sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Box mt={10} >
+                <Grid2 size={{ xs: 12, sm: 12 }}>
+                    <Box mt={10} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <AvatarGroup max={4}>
                             {photo.map((img, index) => (
-                                <Avatar key={index} sx={{ width: 600, height: 400 }} variant="square" src={URL.createObjectURL(img)} />
+                                <Avatar key={index} sx={{ width: 400, height: 400 }} variant="square" src={URL.createObjectURL(img)} />
                             ))}
                         </AvatarGroup>
+                    </Box>
+                    <Box mt={5} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Button
                             component="label"
                             role={undefined}
@@ -79,10 +85,11 @@ const SellPhoto = () => {
                             />
                         </Button>
                         <Button variant="outlined"
-                        onClick={() => navigate('/vender')}
-                        sx={{ borderColor: '#3b06b6', color: '#3b06b6', marginLeft: 1 }}>Continuar</Button>
+                            onClick={() => navigate('/vender')}
+                            sx={{ borderColor: '#3b06b6', color: '#3b06b6', marginLeft: 1 }}>Continuar</Button>
                     </Box>
                 </Grid2>
+
             </Container>
         </Grid2>
     )
